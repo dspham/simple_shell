@@ -1,0 +1,15 @@
+.TH _PRINTF 3 "AUGUST 30 2018" "0.01" "simple shell man page"
+.SH NAME
+.B simple_shell
+
+.SH SYNOPSIS
+
+.SH DESCRIPTION
+
+.SH EXAMPLES
+
+.SH BUGS
+No known bugs.
+
+.SH AUTHOR
+Anne-Sophie Le Bloas, Dennis Pham
