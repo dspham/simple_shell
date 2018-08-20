@@ -65,13 +65,17 @@ int main(int argc, char **argv)
 					perror("Error:");
 			}
 			wait(&status);
+			free(command);
+			free(string);
+
 		}
 		else
+		{
 			printf("./shell: No such file or directory\n");
+			free(command);
+			free(string);
+		}
 	}
-
-	free(command);
-	free(string);
 
 	return (0);
 }
