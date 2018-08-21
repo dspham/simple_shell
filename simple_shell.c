@@ -8,21 +8,23 @@
  * Return: 0 on success
  */
 
-int main(int argc, char **argv)
+int main(int __attribute__ ((unused)) argc, char **argv)
 {
-	int read_c = 0; /* number of bytes read */
+	int read_c = 0, i; /* number of bytes read */
 	int status, error;
 	size_t nbytes = 200; /* number of bytes for the stream */
 	char *string;		 /* command line */
 	pid_t child;
 	char **command = NULL;
-	// char separator = [":", " ", "\n];
+	// char separator = [":", " ", "\n"];
 
 	struct stat st; /* structure of stat output */
 
-	/* Handle non-interactive mode */
-	if (argc > 1)
-		string = argv[1];
+	// /* Handle non-interactive mode */
+	// if (argc > 1)
+	// 	string = argv[1];
+
+	// 	//echo -ls will count a user standard input. So we don't have to worry about it
 
 	/* Interactive mode */
 	/* Programs runs until Ctrl+D is pressed */
@@ -33,10 +35,13 @@ int main(int argc, char **argv)
 
 		/* wait for the user to type a command */
 		string = malloc(nbytes + 1);
+		 /* initialize the content of the buffer to zero */
+		for (i = 0; i < nbytes + 1; i++)
+			string[i] = 0;
 		if (string == NULL)
 			return (1);
 
-		/* get user input */
+		/* get user input */  //for piping
 		read_c = getline(&string, &nbytes, stdin);
 		if (read_c == -1)
 		{
@@ -45,9 +50,9 @@ int main(int argc, char **argv)
 		}
 
 		/* create space for command array */
-		command = malloc(sizeof(char *) * 3);
+		/*command = malloc(sizeof(char *) * 3);
 		if (command == NULL)
-			return (-1);
+			return (-1);*/
 
 		/* populate the array */
 		command = splitstring(string);
@@ -56,7 +61,7 @@ int main(int argc, char **argv)
 		// command[2] = NULL;
 
 		printf("%s\n", command[0]);
-		printf("%s\n", command[1]);
+		printf("second string: %s\n", command[1]);
 
 		/* check if str is in directory */
 		if (stat(string, &st) == 0)
@@ -74,14 +79,14 @@ int main(int argc, char **argv)
 					return (0);
 			}
 			wait(&status);
-			free(command);
-			free(string);
+			//free(command);
+			//free(string);
 		}
 		else
 		{
 			printf("./shell: No such file or directory\n");
-			free(command);
-			free(string);
+			//free(command);
+			//free(string);
 		}
 	} while (read_c != EOF);
 	return (0);

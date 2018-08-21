@@ -7,13 +7,14 @@
 
 char **splitstring(char *buffer)
 {
-    char **stored;
+    char **stored = NULL;
     char *token;
-    char *tmpbuffer;
     int count = 0;
     int element = 0;
+    char *tmpbuffer = 0;
+    //char separators = {' ' , '\t', '\n'};
 
-    while (buffer[count] != '\n')
+/*     while (buffer[count] != '\n')
     {
         if (buffer[count] != ' ')
         {
@@ -23,19 +24,28 @@ char **splitstring(char *buffer)
             }
         }
         count++;
-    }
+    } */
 
-    token = strtok(tmpbuffer, " \n");
-    buffer[count] = '\0';
-    stored = malloc(sizeof(char *) * element + 1);
+    /* make a copy of the buffer */
+    tmpbuffer = strdup(buffer);
+    /*tokenize the temp buffer */
+    strtok(tmpbuffer, " \n\t");
+    /* tokenize the rest of the arguments */
+    while (strtok(NULL, " \n\t"))
+        element++;
+
+    stored = malloc(sizeof(char *) * (element + 1));
+    token = strtok(buffer, " \n");
+    printf("token:%s\n", token);
+    //buffer[count] = '\0';
     count = 0;
     stored[count] = token;
     for (count = 1; count < element + 1; count++)
     {
         token = strtok(NULL, " \n");
+        printf("token:%s\n", token);
         stored[count] = token;
     }
     stored[count] = NULL;
-    free (tmpbuffer);
     return (stored);
 }
