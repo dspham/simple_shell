@@ -10,6 +10,7 @@
 #include <unistd.h>
 
 /* prototypes */
+char **splitstring(char *buffer);
 
 /* structures */
 
