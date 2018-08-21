@@ -50,41 +50,39 @@ int main(int argc, char **argv)
 			return (-1);
 
 		/* populate the array */
-		command[0] = strtok(string, " ");
-		command[1] = strtok(NULL, " ");
-		//command[2] = NULL;
+		command = splitstring(string);
+		// command[0] = strtok(string, " ");
+		// command[1] = strtok(NULL, " ");
+		// command[2] = NULL;
 
 		printf("%s\n", command[0]);
 		printf("%s\n", command[1]);
 
 		/* check if str is in directory */
-		//if (stat(string, &st) == 0)
-		//{
-		/* program is present */
-		/* fork program */
-		child = fork();
-		if (child == 0)
+		if (stat(string, &st) == 0)
 		{
-			/* execute the command in child */
-			error = execve(command[0], command, NULL);
-			if (error == -1)
-				perror("Error:");
-			else
-				return (0);
-		}
-		else
-		{
+			/* program is present */
+			/* fork program */
+			child = fork();
+			if (child == 0)
+			{
+				/* execute the command in child */
+				error = execve(command[0], command, NULL);
+				if (error == -1)
+					perror("Error:");
+				else
+					return (0);
+			}
 			wait(&status);
 			free(command);
 			free(string);
 		}
+		else
+		{
+			printf("./shell: No such file or directory\n");
+			free(command);
+			free(string);
+		}
 	} while (read_c != EOF);
-	//else
-	//{
-	//	printf("./shell: No such file or directory\n");
-	//	free(command);
-	//	free(string);
-	//}
-
 	return (0);
 }
