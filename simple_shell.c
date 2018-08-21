@@ -63,6 +63,12 @@ int main(int __attribute__ ((unused)) argc, char **argv)
 		printf("%s\n", command[0]);
 		printf("second string: %s\n", command[1]);
 
+		if (!strcmp(command[0], "exit"))
+		{
+			free(command);
+			return (0);
+		}
+
 		/* check if str is in directory */
 		if (stat(string, &st) == 0)
 		{

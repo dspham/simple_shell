@@ -35,14 +35,14 @@ char **splitstring(char *buffer)
         element++;
 
     stored = malloc(sizeof(char *) * (element + 1));
-    token = strtok(buffer, " \n");
+    token = strtok(buffer, " \n\t");
     printf("token:%s\n", token);
     //buffer[count] = '\0';
     count = 0;
     stored[count] = token;
     for (count = 1; count < element + 1; count++)
     {
-        token = strtok(NULL, " \n");
+        token = strtok(NULL, " \n\t");
         printf("token:%s\n", token);
         stored[count] = token;
     }
