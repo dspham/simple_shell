@@ -10,9 +10,11 @@
 int main(int argc, char **argv)
 {
 	int read_c = 0; /* number of bytes read */
-	int status, error;
+	int status, error, token_c;
 	size_t nbytes = 200; /* number of bytes for the stream */
 	char *string; /* command line */
+	char *string_cpy; /* copy of command line */
+	char *p; /* pointer for capturing tokens */
 	pid_t child;
 	char **command = NULL;
 
@@ -42,14 +44,35 @@ int main(int argc, char **argv)
 			printf("getline() failed");
 		}
 
+		/* Remove new line from input */
+		string = strtok(string, "\n");
+
+		/* Create a duplicate of the command line */
+		string_cpy = strdup(string);
+
+		/* Count the number of tokens */
+		p = strtok(string_cpy, " ");
+		token_c = 1;
+		while (p)
+		{
+			p = strtok(NULL, " ");
+			token_c++;
+		}
+
 		/* create space for command array */
-		command = malloc(sizeof(char *) * 3);
+		command = malloc(sizeof(char *) * (token_c + 1));
 		if (command == NULL)
 			return (-1);
 
 		/* populate the array */
-		command[0] = strtok(string, "\n");
-		command[1] = NULL;
+		token_c = 1;
+		p = strtok(string, " ");
+		while (p)
+		{
+			command[token_c++ - 1] = p;
+			p = strtok(NULL, " ");
+		}
+		command[token_c] = NULL;
 
 		/* check if str is in directory */
 		if (stat(string, &st) == 0)
@@ -67,6 +90,7 @@ int main(int argc, char **argv)
 			wait(&status);
 			free(command);
 			free(string);
+			free(string_cpy);
 
 		}
 		else
@@ -74,6 +98,7 @@ int main(int argc, char **argv)
 			printf("./shell: No such file or directory\n");
 			free(command);
 			free(string);
+			free(string_cpy);
 		}
 	}
 
