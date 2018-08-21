@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 /**
  * main - simple shell
  * @argc: counts of arguments
@@ -12,9 +13,10 @@ int main(int argc, char **argv)
 	int read_c = 0; /* number of bytes read */
 	int status, error;
 	size_t nbytes = 200; /* number of bytes for the stream */
-	char *string; /* command line */
+	char *string;		 /* command line */
 	pid_t child;
 	char **command = NULL;
+	// char separator = [":", " ", "\n];
 
 	struct stat st; /* structure of stat output */
 
@@ -24,7 +26,7 @@ int main(int argc, char **argv)
 
 	/* Interactive mode */
 	/* Programs runs until Ctrl+D is pressed */
-	while (read_c != EOF)
+	do
 	{
 		/* Display a prompt */
 		write(STDIN_FILENO, "#cisfun$ ", 9);
@@ -48,34 +50,41 @@ int main(int argc, char **argv)
 			return (-1);
 
 		/* populate the array */
-		command[0] = strtok(string, "\n");
-		command[1] = NULL;
+		command[0] = strtok(string, " ");
+		command[1] = strtok(NULL, " ");
+		//command[2] = NULL;
+
+		printf("%s\n", command[0]);
+		printf("%s\n", command[1]);
 
 		/* check if str is in directory */
-		if (stat(string, &st) == 0)
+		//if (stat(string, &st) == 0)
+		//{
+		/* program is present */
+		/* fork program */
+		child = fork();
+		if (child == 0)
 		{
-			/* program is present */
-			/* fork program */
-			child = fork();
-			if (child == 0)
-			{
-				/* execute the command in child */
-				error = execve(command[0], command, NULL);
-				if (error == -1)
-					perror("Error:");
-			}
-			wait(&status);
-			free(command);
-			free(string);
-
+			/* execute the command in child */
+			error = execve(command[0], command, NULL);
+			if (error == -1)
+				perror("Error:");
+			else
+				return (0);
 		}
 		else
 		{
-			printf("./shell: No such file or directory\n");
+			wait(&status);
 			free(command);
 			free(string);
 		}
-	}
+	} while (read_c != EOF);
+	//else
+	//{
+	//	printf("./shell: No such file or directory\n");
+	//	free(command);
+	//	free(string);
+	//}
 
 	return (0);
 }
