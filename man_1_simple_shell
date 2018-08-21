@@ -1,10 +1,27 @@
 .TH _PRINTF 3 "AUGUST 30 2018" "0.01" "simple shell man page"
 .SH NAME
-.B simple_shell
+.B HSH
+\- Simple Shell developed by Holberton Students
 
 .SH SYNOPSIS
+    hsh [command_string]
 
 .SH DESCRIPTION
+HSH is an sh-compatible command language interpreter that executes commands read
+from the standard input or from a file.
+
+.SH SHELL GRAMMAR
+.IP
+.P
+.TP
+.B Simple Commands
+A simple command is a sequence of optional variable assignments followed by blank
+separated words and redirections, and terminated by a control operator. The first
+word specifies the command to be executed, and is passed as an argment zero. The
+remaining words are passed as arguments to the invoked command.
+
+.SH QUITING
+You can quit the shell program by pressing the CTRL + C keys on your keyboard.
 
 .SH EXAMPLES
 
