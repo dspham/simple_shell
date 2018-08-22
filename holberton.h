@@ -11,7 +11,21 @@
 
 /* prototypes */
 char **splitstring(char *buffer);
+char *_strdup(char *str);
+char *str_concat(char *s1, char *s2);
 
 /* structures */
+/**
+ * struct list_s - singly linked list
+ * @str: string - (malloc'ed string)
+ * @next: points to the next node
+ *
+ * Description - signly linked list node structure
+ */
+typedef struct list_s
+{
+	char *str;
+	struct list_s *next;
+} list_t;
 
 #endif /* _HOLBERTON_H_ */
