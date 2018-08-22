@@ -18,24 +18,27 @@ char **splitstring(char *buffer)
 	if (buffer == NULL)
 		return (NULL);
 
+	/* Remove the new line from buffer */
+	buffer = strtok(buffer, "\n");
+
 	/* make a copy of the buffer */
 	tmpbuffer = strdup(buffer);
 
 	/* Calculate the number of arguments */
-	strtok(tmpbuffer, " \n\t");
-	while (strtok(NULL, " \n\t"))
+	strtok(tmpbuffer, " ");
+	while (strtok(NULL, " "))
 		elements_c++;
 
 	/* Allocate memory for the array */
 	array = malloc(sizeof(char *) * (elements_c + 1));
 
 	/* Populate the array */
-	token = strtok(buffer, " \n\t");
+	token = strtok(buffer, " ");
 	count = 0;
 	array[count] = token;
 	for (count = 1; count < elements_c + 1; count++)
 	{
-		token = strtok(NULL, " \n\t");
+		token = strtok(NULL, " ");
 		array[count] = token;
 	}
 	array[count] = NULL;

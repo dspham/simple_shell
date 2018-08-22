@@ -9,7 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-	int read_c = 0; /* number of bytes read */
+	int read_c = 1; /* number of bytes read */
 	int status, error;
 	size_t nbytes = 200; /* number of bytes for the stream */
 	char *string; /* command line */
@@ -39,6 +39,9 @@ int main(int argc, char **argv)
 			exit(90);
 			printf("getline() failed");
 		}
+		else if (read_c == 1)
+			continue;
+
 
 		command = splitstring(string);
 
@@ -69,7 +72,7 @@ int main(int argc, char **argv)
 			free(string);
 
 		}
-		else
+		else if (read_c > 1)
 		{
 			printf("./shell: No such file or directory\n");
 
