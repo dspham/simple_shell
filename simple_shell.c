@@ -29,7 +29,11 @@ int main(int argc, char **argv)
 	int temp;
 	int i = 0;
 
-	printenviron(environ);
+	// printf("qwer%s\n", command[0]);
+	// if (strcmp(command[0], "env") == 0)
+	// {
+	// 	printenviron(environ);
+	// }
 
 	struct stat st; /* structure of stat output */
 
@@ -61,6 +65,13 @@ int main(int argc, char **argv)
 		command = splitstring(string);
 		for (i = 0; command[i] != NULL; i++)
 		printf("%s\n", command[i]);
+
+		printf("qwer%s\n", command[0]);
+		if (strcmp(command[0], "env") == 0)
+		{
+			printenviron(environ);
+			continue;
+		}
 
 		if (strcmp(command[0], "exit") == 0)
 		{
