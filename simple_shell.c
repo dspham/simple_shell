@@ -1,5 +1,5 @@
 #include "holberton.h"
-#include <stdio.h>
+
 /**
  * main - simple shell
  * @argc: counts of arguments
@@ -8,66 +8,79 @@
  * Return: 0 on success
  */
 
-int main(int __attribute__ ((unused)) argc, char **argv)
+extern char **environ;
+// void printenviron(char **environ)
+// {
+// 	int i;
+// 	for (i = 0; environ[i] != NULL; i++)
+//     {
+//         write(1, environ[i], strlen(environ[i]));
+//         write(1, "\n", 1);
+//     }
+// }
+int main(int argc, char **argv)
 {
-	int read_c = 0, i; /* number of bytes read */
+	int read_c = 1; /* number of bytes read */
 	int status, error;
 	size_t nbytes = 200; /* number of bytes for the stream */
-	char *string;		 /* command line */
+	char *string; /* command line */
 	pid_t child;
 	char **command = NULL;
-	// char separator = [":", " ", "\n"];
+	int temp;
+	int i = 0;
+
+	printenviron(environ);
 
 	struct stat st; /* structure of stat output */
 
-	// /* Handle non-interactive mode */
-	// if (argc > 1)
-	// 	string = argv[1];
-
-	// 	//echo -ls will count a user standard input. So we don't have to worry about it
+	/* Handle non-interactive mode */
+	if (argc > 1)
+		string = argv[1];
 
 	/* Interactive mode */
 	/* Programs runs until Ctrl+D is pressed */
-	do
+	while (read_c != EOF)
 	{
 		/* Display a prompt */
 		write(STDIN_FILENO, "#cisfun$ ", 9);
 
-		/* wait for the user to type a command */
+		/* Allocated memory for the string command */
 		string = malloc(nbytes + 1);
-		 /* initialize the content of the buffer to zero */
-		for (i = 0; i < nbytes + 1; i++)
-			string[i] = 0;
-		if (string == NULL)
-			return (1);
 
-		/* get user input */  //for piping
+		/* Get user input */
 		read_c = getline(&string, &nbytes, stdin);
 		if (read_c == -1)
 		{
 			exit(90);
 			printf("getline() failed");
 		}
+		else if (read_c == 1)
+			continue;
 
-		/* create space for command array */
-		/*command = malloc(sizeof(char *) * 3);
-		if (command == NULL)
-			return (-1);*/
 
-		/* populate the array */
 		command = splitstring(string);
-		// command[0] = strtok(string, " ");
-		// command[1] = strtok(NULL, " ");
-		// command[2] = NULL;
+		for (i = 0; command[i] != NULL; i++)
+		printf("%s\n", command[i]);
 
-		printf("%s\n", command[0]);
-		printf("second string: %s\n", command[1]);
-
-		if (!strcmp(command[0], "exit"))
+		if (strcmp(command[0], "exit") == 0)
 		{
+			if (command[1] == NULL)
+				temp = 0;
+			else
+				temp = atoi(command[1]);
+			while (command[i] != NULL)
+			{
+				free(command[i]);
+				i++;
+			}
 			free(command);
-			return (0);
+			__exit(temp);
 		}
+		// if (!strcmp(command[0], "exit"))
+		// {
+		// 	free(command);
+		// 	return (0);
+		// }
 
 		/* check if str is in directory */
 		if (stat(string, &st) == 0)
@@ -85,15 +98,19 @@ int main(int __attribute__ ((unused)) argc, char **argv)
 					return (0);
 			}
 			wait(&status);
-			//free(command);
-			//free(string);
+
+			free(command);
+			free(string);
+
 		}
-		else
+		else if (read_c > 1)
 		{
 			printf("./shell: No such file or directory\n");
-			//free(command);
-			//free(string);
+
+			free(command);
+			free(string);
 		}
-	} while (read_c != EOF);
+	}
+
 	return (0);
 }

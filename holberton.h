@@ -11,6 +11,8 @@
 
 /* prototypes */
 char **splitstring(char *buffer);
+void printenviron(char **environ);
+int __exit(int status);
 
 /* structures */
 
