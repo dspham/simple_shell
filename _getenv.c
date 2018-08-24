@@ -1,4 +1,5 @@
 #include <stdlib.h>
+
 /**
  * _getenv - gets an environment variable
  * @name: name of the variable
@@ -16,6 +17,7 @@ char *_getenv(const char *name)
 	{
 		/* While environ[i][j] matches name[j] */
 		j = 0;
+
 		while (environ[i][j] == name[j] && name[j] != '\0')
 			j++;
 
