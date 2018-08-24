@@ -7,6 +7,9 @@
  *                                                                                                                                                
  * Return: 0 on success                                                                                                                           
  */
+
+extern char **environ;
+
 int main(int argc, char **argv)
 {
         int read_c = 1, i; /* number of bytes read */
@@ -16,6 +19,7 @@ int main(int argc, char **argv)
         pid_t child;
         char **command = NULL, **path_array = NULL;
         char *path;
+        int temp;
 
         struct stat st; /* structure of stat output */
 
@@ -43,11 +47,29 @@ int main(int argc, char **argv)
                 else if (read_c == 1)
                         continue;
                 command = splitstring(string);
+                for (i = 0; command[i] != NULL; i++)
+                printf("%s\n", command[i]);
 
-                if (!strcmp(command[0], "exit"))
+                printf("qwer%s\n", command[0]);
+                if (strcmp(command[0], "env") == 0)
                 {
+                        printenviron(environ);
+                        continue;
+                }
+
+                if (strcmp(command[0], "exit") == 0)
+                {
+                        if (command[1] == NULL)
+                                temp = 0;
+                        else
+                                temp = atoi(command[1]);
+                        while (command[i] != NULL)
+                        {
+                                free(command[i]);
+                                i++;
+                        }
                         free(command);
-                        return (0);
+                        __exit(temp);
                 }
 
                 /* check if str is in directory */
@@ -67,16 +89,16 @@ int main(int argc, char **argv)
                         }
                         wait(&status);
 
-                        free(command);
-                        free(string);
+                        // free(command);
+                        // free(string);
 
                 }
                 else if (read_c == 1)
                 {
                         printf("./shell: No such file or directory\n");
 
-                        free(command);
-                        free(string);
+                        // free(command);
+                        // free(string);
                 }
                 else
                 {
@@ -110,9 +132,9 @@ int main(int argc, char **argv)
                                         }
                                         wait(&status);
 
-                                        free(command);
-                                        free(full_path);
-                                        free(string);
+                                        // free(command);
+                                        // free(full_path);
+                                        // free(string);
                                 }
                                 printf("This is the i: %d\n", i);
                         }
