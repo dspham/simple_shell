@@ -15,6 +15,10 @@ char **tok_path(void)
 	/* Initialize */
 	path = _getenv("PATH");
 	path_cpy = _strdup(path);
+<<<<<<< HEAD
+=======
+	printf("copy: %s \nactual: %s\n", path_cpy, path);
+>>>>>>> 84230d5d8d2d8466c0dd240e253818d0acc1995d
 
 	/* Find memory size for array */
 	token = strtok(path_cpy, ":");
@@ -25,7 +29,11 @@ char **tok_path(void)
 	}
 
 	/* Allocate memory for array */
+<<<<<<< HEAD
 	path_array = malloc(sizeof(char) * (token_c + 1));
+=======
+	path_array = malloc(sizeof(char *) * (token_c + 1));
+>>>>>>> 84230d5d8d2d8466c0dd240e253818d0acc1995d
 	if (path_array == NULL)
 		return (NULL);
 
@@ -34,9 +42,16 @@ char **tok_path(void)
 	token = strtok(path, ":");
 	while (token)
 	{
+<<<<<<< HEAD
 		++token_c;
 		path_array[token_c - 1] = token;
 		token = strtok(NULL, ":");
+=======
+		path_array[token_c - 1] = token;
+		printf("%s\n", token);
+		token = strtok(NULL, ":");
+		++token_c;	
+>>>>>>> 84230d5d8d2d8466c0dd240e253818d0acc1995d
 	}
 	path_array[token_c] = 0;
 

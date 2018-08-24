@@ -14,6 +14,16 @@ char **splitstring(char *buffer);
 char *_strdup(char *str);
 char *str_concat(char *s1, char *s2);
 char *_getenv(const char *name);
+<<<<<<< HEAD
+=======
+char **tok_path(void);
+char *path_concat(char *s1, char *s2);
+void printenviron(char **environ);
+int __exit(int status);
+
+
+
+>>>>>>> 84230d5d8d2d8466c0dd240e253818d0acc1995d
 
 /* structures */
 /**
