@@ -1,10 +1,10 @@
 #include "holberton.h"
-/**                                                                                                                                               
- * main - simple shell                                                                                                                            
- * @argc: counts of arguments                                                                                                                     
- * @argv: string containing the arguments                                                                                                         
- *                                                                                                                                                
- * Return: 0 on success                                                                                                                           
+/**
+ * main - simple shell
+ * @argc: counts of arguments
+ * @argv: string containing the arguments
+ *
+ * Return: 0 on success
  */
 int main(int argc, char **argv)
 {
@@ -45,10 +45,7 @@ int main(int argc, char **argv)
 			continue;
 
 		command = splitstring(string);
-		for (i = 0; command[i] != NULL; i++)
-		// printf("%s\n", command[i]);
 
-		printf("qwer%s\n", command[0]);
 		if (strcmp(command[0], "env") == 0)
 		{
 			printenviron(environ);
@@ -106,11 +103,7 @@ int main(int argc, char **argv)
 			/* the elements of the path array exist */
 			for (i = 0; path_array[i] != '\0'; i++)
 			{
-				printf("path before concat %s\n", path_array[i]);
-
 				full_path = path_concat(path_array[i], command[0]);
-				printf("full path right now: %s\n", full_path);
-
 				if (access(full_path, X_OK) == 0)
 				{
 					printf("Found it!\n");
@@ -119,7 +112,6 @@ int main(int argc, char **argv)
 					child = fork();
 					if (child == 0)
 					{
-						printf("in the child\n");
 						/* execute the command in child */
 						error = execve(full_path, command, NULL);
 						if (error == -1)
@@ -134,7 +126,6 @@ int main(int argc, char **argv)
 					free(string);
 					break;
 				}
-				printf("This is the i: %d\n", i);
 			}
 		}
 	}
