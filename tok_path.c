@@ -15,6 +15,7 @@ char **tok_path(void)
 	/* Initialize */
 	path = _getenv("PATH");
 	path_cpy = _strdup(path);
+	printf("copy: %s \nactual: %s\n", path_cpy, path);
 
 	/* Find memory size for array */
 	token = strtok(path_cpy, ":");
@@ -34,9 +35,10 @@ char **tok_path(void)
 	token = strtok(path, ":");
 	while (token)
 	{
-		++token_c;
 		path_array[token_c - 1] = token;
+		printf("%s\n", token);
 		token = strtok(NULL, ":");
+		++token_c;	
 	}
 	path_array[token_c] = 0;
 

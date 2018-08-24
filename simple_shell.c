@@ -48,7 +48,7 @@ int main(int argc, char **argv)
                         continue;
                 command = splitstring(string);
                 for (i = 0; command[i] != NULL; i++)
-                printf("%s\n", command[i]);
+                // printf("%s\n", command[i]);
 
                 printf("qwer%s\n", command[0]);
                 if (strcmp(command[0], "env") == 0)
@@ -135,6 +135,7 @@ int main(int argc, char **argv)
                                         // free(command);
                                         // free(full_path);
                                         // free(string);
+                                        break;
                                 }
                                 printf("This is the i: %d\n", i);
                         }
