@@ -13,7 +13,7 @@ char **tok_path(void)
 	int i, token_c = 0;
 
 	/* Initialize */
-	path = _getenv("PATH");
+	path = _strdup(_getenv("PATH"));
 	path_cpy = _strdup(path);
 
 	/* Find memory size for array */
@@ -38,9 +38,8 @@ char **tok_path(void)
 		++token_c;
 		path_array[token_c - 1] = token;
 		token = strtok(NULL, ":");
-		++token_c;
 	}
-	path_array[token_c] = 0;
+	path_array[token_c] = NULL;
 
 	return (path_array);
 }
