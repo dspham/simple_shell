@@ -18,7 +18,6 @@ int main(int argc, char **argv)
         char *string, *full_path; /* command line */
         pid_t child;
         char **command = NULL, **path_array = NULL;
-        char *path;
         int temp;
 
         struct stat st; /* structure of stat output */
@@ -47,6 +46,8 @@ int main(int argc, char **argv)
                 else if (read_c == 1)
                         continue;
                 command = splitstring(string);
+                for (i = 0; command[i] != NULL; i++)
+                        ;
 
                 if (strcmp(command[0], "exit") == 0)
                 {
@@ -54,6 +55,7 @@ int main(int argc, char **argv)
                                 temp = 0;
                         else
                                 temp = atoi(command[1]);
+                        i = 0;
                         while (command[i] != NULL)
                         {
                                 free(command[i]);
