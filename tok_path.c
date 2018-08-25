@@ -10,7 +10,7 @@ char **tok_path(void)
 {
 	char *path, *path_cpy, *token;
 	char **path_array;
-	int i, token_c = 0;
+	int token_c = 0;
 
 	/* Initialize */
 	path = _strdup(_getenv("PATH"));
