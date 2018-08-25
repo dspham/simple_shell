@@ -9,6 +9,8 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
+extern char **environ;
+
 /* prototypes */
 char **splitstring(char *buffer);
 char *_strdup(char *str);
@@ -18,6 +20,7 @@ char **tok_path(void);
 char *path_concat(char *s1, char *s2);
 void printenviron(char **environ);
 int __exit(int status);
+char exec_path(char **path_array, char **command);
 
 /* structures */
 /**
@@ -32,5 +35,12 @@ typedef struct list_s
 	char *str;
 	struct list_s *next;
 } list_t;
+
+
+/**
+ * struct stat - stat output
+ * @st: directory check
+ */
+struct stat st; /* structure of stat output */
 
 #endif /* _HOLBERTON_H_ */
