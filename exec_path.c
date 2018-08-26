@@ -2,16 +2,16 @@
 
 /**
  * exec_path - executes arguments concatenated to path directory
- * @path_array: tokenized array of directory 
  * @command: array of arguments
+ *
  * Return: the directory with argument
  */
-char exec_path(char **path_array, char **command)
+char exec_path(char **command)
 {
-int i;
-int status, error;
-char *full_path;
-pid_t child;
+	int i, status, error;
+	char *full_path;
+	char **path_array;
+	pid_t child;
 
 	/* Store the path directories into an array */
 	path_array = tok_path();
@@ -30,17 +30,15 @@ pid_t child;
 				/* execute the command in child */
 				error = execve(full_path, command, NULL);
 				if (error == -1)
+				{
 					perror("Error:");
-				else
-					return (0);
+					exit(91);
+				}
 			}
 			wait(&status);
-
-			/* free(command);
-			free(full_path);
-			free(string); */
-			break;
+			return (0);
 		}
 	}
-	return (*full_path);
+
+	return (1);
 }

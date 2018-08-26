@@ -19,7 +19,7 @@ char **tok_path(void);
 char *path_concat(char *s1, char *s2);
 void printenviron(char **environ);
 int __exit(char **command);
-char exec_path(char **path_array, char **command);
+char exec_path(char **command);
 char exec_cmd(char **command);
 
 /* structures */
