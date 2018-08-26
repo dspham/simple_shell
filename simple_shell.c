@@ -8,7 +8,7 @@
  * @environ: environment variables
  * Return: 0 on success
  */
-int main(int argc, char **argv, char **environ)
+int main(int argc, char **argv)
 {
 	int read_c = 1, i, temp; /* number of bytes read */
 	int status, error;
@@ -35,6 +35,7 @@ int main(int argc, char **argv, char **environ)
 		read_c = getline(&string, &nbytes, stdin);
 		if (read_c == -1)
 		{
+			write(1, "\n", 1);
 			exit(90);
 			printf("getline() failed");
 		}
@@ -42,49 +43,33 @@ int main(int argc, char **argv, char **environ)
 			continue;
 		command = splitstring(string);
 		for (i = 0; command[i] != NULL; i++)
-			;
-
-		if (strcmp(command[0], "env") == 0)
-		{
-			printenviron(environ);
-			continue;
-		}
-
-		if (strcmp(command[0], "exit") == 0)
-		{
-			if (command[1] == NULL)
-				temp = 0;
-			else
-				temp = atoi(command[1]);
-			i = 0;
-			while (command[i] != NULL)
+		{		
+			if (strcmp(command[0], "env") == 0)
 			{
-				free(command[i]);
-				i++;
+				printenviron(environ);
+				continue;
 			}
-			free(command);
-			__exit(temp);
+
+			if (strcmp(command[0], "exit") == 0)
+			{
+				if (command[1] == NULL)
+					temp = 0;
+				else
+					temp = atoi(command[1]);
+				while (command[i] != NULL)
+				{
+					free(command[i]);
+					i++;
+				}
+				free(command);
+				__exit(temp);
+			}
 		}
 
 		/* check if str is in directory */
 		if (stat(string, &st) == 0)
 		{
-			/* program is present */
-			/* fork program */
-			child = fork();
-			if (child == 0)
-			{
-				/* execute the command in child */
-				error = execve(command[0], command, NULL);
-				if (error == -1)
-					perror("Error:");
-				else
-					return (0);
-			}
-			wait(&status);
-
-			// free(command);
-			// free(string);
+			exec_cmd(command);
 		}
 		else if (read_c == 1)
 		{
