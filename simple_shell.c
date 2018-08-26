@@ -8,11 +8,9 @@
  */
 int main(int argc, char **argv)
 {
-	int read_c = 1, i, temp; /* number of bytes read */
-	int status, error;
+	int read_c = 1; /* number of bytes read */
 	size_t nbytes = 200; /* number of bytes for the stream */
-	char *string, *full_path; /* command line */
-	pid_t child;
+	char *string; /* command line */
 	char **command = NULL, **path_array = NULL;
 
 	/* Handle non-interactive mode */
@@ -40,17 +38,16 @@ int main(int argc, char **argv)
 		else if (read_c == 1)
 			continue;
 		command = splitstring(string);
-		//for (i = 0; command[i] != NULL; i++)	
-			if (strcmp(command[0], "env") == 0)
-			{
-				printenviron(environ);
-				continue;
-			}
+		if (_strcmp(command[0], "env") == 0)
+		{
+			printenviron(environ);
+			continue;
+		}
 
-			if (strcmp(command[0], "exit") == 0)
-			{
-				__exit(command);
-			}
+		if (_strcmp(command[0], "exit") == 0)
+		{
+			__exit(command);
+		}
 
 		/* check if str is in directory */
 		if (stat(string, &st) == 0)
