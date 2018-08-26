@@ -23,9 +23,11 @@ Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/asl
 Installing
 ==========
 #### Source
-```git clone git@github.com:dspham/simple_shell.git
+```
+git clone git@github.com:dspham/simple_shell.git
 cd simple_shell
-gcc -Wall -Werror -Wextra -pedantic *.c -o hsh```
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+```
 
 * To exit the shell, the user can either type `exit` or `control + d`
 
