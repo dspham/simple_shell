@@ -36,12 +36,6 @@ typedef struct list_s
 	struct list_s *next;
 } list_t;
 
-/**
- * struct stat - stat output
- * @st: directory check
- */
-struct stat st; /* structure of stat output */
-
 /* global variables */
 extern char **environ;
 

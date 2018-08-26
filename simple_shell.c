@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 	size_t nbytes = 200; /* number of bytes for the stream */
 	char *string; /* command line */
 	char **command = NULL, **path_array = NULL;
+	struct stat st; 
 
 	/* Handle non-interactive mode */
 	if (argc > 1)
