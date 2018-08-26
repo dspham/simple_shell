@@ -11,8 +11,8 @@ int main(int argc, char **argv)
 	int read_c = 1; /* number of bytes read */
 	size_t nbytes = 200; /* number of bytes for the stream */
 	char *string; /* command line */
-	char **command = NULL, **path_array = NULL;
-	struct stat st; 
+	char **command = NULL;
+	struct stat st;
 
 	/* Handle non-interactive mode */
 	if (argc > 1)
@@ -36,34 +36,36 @@ int main(int argc, char **argv)
 			exit(90);
 			printf("getline() failed");
 		}
+		/* Loop again if user just pressed newline */
 		else if (read_c == 1)
 			continue;
+
 		command = splitstring(string);
+
+		/* Built-in printenv */
 		if (_strcmp(command[0], "env") == 0)
 		{
 			printenviron(environ);
 			continue;
 		}
 
+		/* Built-in exit */
 		if (_strcmp(command[0], "exit") == 0)
 		{
 			__exit(command);
 		}
 
 		/* check if str is in directory */
-		if (stat(string, &st) == 0)
-		{
+		if (access(command[0], X_OK) == 0)
 			exec_cmd(command);
-		}
-		else if (read_c == 1)
+		else if (read_c > 1)
 		{
-			printf("./shell: No such file or directory\n");
-
-			// free(command);
-			// free(string);
+			if (exec_path(command) == 1)
+				printf("%s: No such file or directory\n", argv[0]);
 		}
 		else
-			exec_path(path_array, command);
+			printf("%s: No such file or directory\n", argv[0]);
 	}
+
 	return (0);
 }

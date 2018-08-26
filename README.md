@@ -8,7 +8,7 @@ Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/asl
 * Allowed editors: vi, vim, emacs
 * Environment: `Ubuntu 14.04 LTS`
 * Compiler: `gcc 4.8.4` using the flags `-Wall -Werror -Wextra and -pedantic`
-* Styling: In complicance with Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki). It will be checked using betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
+* Styling: In complicance with Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki). It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
 * No more than 5 functions per file
 * All files should end with a new line
 * All header files should be include guarded
@@ -23,19 +23,33 @@ Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/asl
 Installing
 ==========
 #### Source
-* `git clone git@github.com:dspham/simple_shell.git`
-* cd into the directory
-* `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
+```
+git clone git@github.com:dspham/simple_shell.git
+cd simple_shell
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+```
 
 * To exit the shell, the user can either type `exit` or `control + d`
 
 
+### Interactive and non-interactive mode
+In interactive mode, the user input is accepted from the command line.
+In non-interactive-mode, the user must first run the program:
 
-### Usage
+ `$ ./hsh`
 
+Then a subshell opens, which accept the commands.
 
+### Builtins and commands
 
-### Example
+You can check the builtin commands in the man page:
+`$ man ./man_1_simple_shell`
+
+#### Builtins:
+* `exit`
+* `env`
+
+### Examples
 ```
 parallels@parallels-vm:~/simple_shell$ ./hsh
 #cisfun$ w
@@ -81,11 +95,10 @@ drwxrwxr-x  8 1000 1000  4096 Aug 26 00:57 .git
 -rw-rw-r--  1 1000 1000    16 Aug 24 17:48 test_ls_2
 -rw-rw-r--  1 1000 1000   779 Aug 24 17:27 tok_path.c
 #cisfun$ exit
-parallels@parallels-vm:~/simple_shell$ 
+parallels@parallels-vm:~/simple_shell$
 ```
 
 ### Notes
-
 
 Authors
 --------

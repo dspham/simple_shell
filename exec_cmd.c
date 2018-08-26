@@ -25,7 +25,4 @@ char exec_cmd(char **command)
 	wait(&status);
 
 	return (0);
-
-	// free(command);
-	// free(string);
 }

@@ -23,10 +23,9 @@ void printenviron(char **environ)
  */
 int __exit(char **command)
 {
-	//char **command;
 	int i, temp;
 
-	for (i = 0; command[i] != NULL; i++)	
+	for (i = 0; command[i] != NULL; i++)
 
 	if (command[1] == NULL)
 	temp = 0;
