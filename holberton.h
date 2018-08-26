@@ -13,11 +13,14 @@
 char **splitstring(char *buffer);
 char *_strdup(char *str);
 char *str_concat(char *s1, char *s2);
+int _strcmp(char *s1, char *s2);
 char *_getenv(const char *name);
 char **tok_path(void);
 char *path_concat(char *s1, char *s2);
 void printenviron(char **environ);
-int __exit(int status);
+int __exit(char **command);
+char exec_path(char **path_array, char **command);
+char exec_cmd(char **command);
 
 /* structures */
 /**
@@ -32,5 +35,14 @@ typedef struct list_s
 	char *str;
 	struct list_s *next;
 } list_t;
+
+/**
+ * struct stat - stat output
+ * @st: directory check
+ */
+struct stat st; /* structure of stat output */
+
+/* global variables */
+extern char **environ;
 
 #endif /* _HOLBERTON_H_ */

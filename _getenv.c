@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include "holberton.h"
 
 /**
  * _getenv - gets an environment variable
@@ -8,7 +8,6 @@
  */
 char *_getenv(const char *name)
 {
-	extern char **environ;
 	unsigned int i, j;
 
 	/* Loop through the environment string */
