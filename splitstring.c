@@ -25,20 +25,20 @@ char **splitstring(char *buffer)
 	tmpbuffer = strdup(buffer);
 
 	/* Calculate the number of arguments */
-	strtok(tmpbuffer, " ");
-	while (strtok(NULL, " "))
+	strtok(tmpbuffer, " \t");
+	while (strtok(NULL, " \t"))
 		elements_c++;
 
 	/* Allocate memory for the array */
 	array = malloc(sizeof(char *) * (elements_c + 1));
 
 	/* Populate the array */
-	token = strtok(buffer, " ");
+	token = strtok(buffer, " \t");
 	count = 0;
 	array[count] = token;
 	for (count = 1; count < elements_c + 1; count++)
 	{
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t");
 		array[count] = token;
 	}
 	array[count] = NULL;

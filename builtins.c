@@ -1,26 +1,42 @@
 #include "holberton.h"
+
 /**
- * print_env - print the current environment
- * @env: environment
+ * printenviron - print the current environment
+ * @environ: environment
  * Return: none
  */
 void printenviron(char **environ)
 {
 	int i;
+
 	for (i = 0; environ[i] != NULL; i++)
-    {
-        write(1, environ[i], strlen(environ[i]));
-        write(1, "\n", 1);
-    }
+	{
+		write(1, environ[i], strlen(environ[i]));
+		write(1, "\n", 1);
+	}
 }
 
-
 /**
- * _exit - exit a program
- * @status:
+ * __exit - exit a program
+ * @command: array of arguments
  * Return: none
  */
-int __exit(int status)
+int __exit(char **command)
 {
-    exit(status);
+	//char **command;
+	int i, temp;
+
+	for (i = 0; command[i] != NULL; i++)	
+
+	if (command[1] == NULL)
+	temp = 0;
+	else
+		temp = atoi(command[1]);
+	while (command[i] != NULL)
+	{
+		free(command[i]);
+		i++;
+	}
+	free(command);
+	_exit(temp);
 }
