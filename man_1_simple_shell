@@ -20,6 +20,20 @@ separated words and redirections, and terminated by a control operator. The firs
 word specifies the command to be executed, and is passed as an argment zero. The
 remaining words are passed as arguments to the invoked command.
 
+.SH BUILT-INS & COMMANDS
+.PP
+.B env
+- writes environmental variable
+.PP
+.B getenv
+- get a specific environmental variable
+.B echo [arg ...]
+- Argments separated by spaces, followed by a newline, are printed on the
+standard output
+.B exit [n]
+- Cause the shell to exit with a status of n. If n is omitted, the exit status
+is that the last command executed.
+
 .SH QUITING
 You can quit the shell program by pressing the CTRL + C keys on your keyboard.
 
