@@ -1,6 +1,12 @@
 #include "holberton.h"
 
-char exec_path(char **path_array, char **command)
+/**
+ * exec_path - executes arguments concatenated to path directory
+ * @path_array: tokenized array of directory 
+ * @command: array of arguments
+ * Return: the directory with argument
+ */
+char exec_path(char **path_array, char **scomsmand)
 {
 int i;
 int status, error;

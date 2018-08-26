@@ -1,11 +1,9 @@
-
 #include "holberton.h"
 
 /**
  * main - simple shell
  * @argc: counts of arguments
  * @argv: string containing the arguments
- * @environ: environment variables
  * Return: 0 on success
  */
 int main(int argc, char **argv)
@@ -42,8 +40,7 @@ int main(int argc, char **argv)
 		else if (read_c == 1)
 			continue;
 		command = splitstring(string);
-		for (i = 0; command[i] != NULL; i++)
-		{		
+		for (i = 0; command[i] != NULL; i++)	
 			if (strcmp(command[0], "env") == 0)
 			{
 				printenviron(environ);
@@ -64,7 +61,6 @@ int main(int argc, char **argv)
 				free(command);
 				__exit(temp);
 			}
-		}
 
 		/* check if str is in directory */
 		if (stat(string, &st) == 0)

@@ -1,5 +1,10 @@
 #include "holberton.h"
 
+/**
+ * exec_cmd - executes tokenized commands
+ * @command: array of arguments
+ * Return: none
+ */
 char exec_cmd(char **command)
 {
 	int status, error;
@@ -18,6 +23,8 @@ char exec_cmd(char **command)
 			return (0);
 	}
 	wait(&status);
+
+	return (0);
 
 	// free(command);
 	// free(string);
