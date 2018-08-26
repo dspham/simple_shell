@@ -2,7 +2,7 @@
 
 /**
  * exec_path - executes arguments concatenated to path directory
- * @path_array: tokenized array of directory 
+ * @path_array: tokenized array of directory
  * @command: array of arguments
  * Return: the directory with argument
  */
@@ -35,10 +35,6 @@ pid_t child;
 					return (0);
 			}
 			wait(&status);
-
-			/* free(command);
-			free(full_path);
-			free(string); */
 			break;
 		}
 	}
