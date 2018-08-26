@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 		else if (read_c == 1)
 			continue;
 		command = splitstring(string);
-		for (i = 0; command[i] != NULL; i++)	
+		//for (i = 0; command[i] != NULL; i++)	
 			if (strcmp(command[0], "env") == 0)
 			{
 				printenviron(environ);
@@ -49,17 +49,7 @@ int main(int argc, char **argv)
 
 			if (strcmp(command[0], "exit") == 0)
 			{
-				if (command[1] == NULL)
-					temp = 0;
-				else
-					temp = atoi(command[1]);
-				while (command[i] != NULL)
-				{
-					free(command[i]);
-					i++;
-				}
-				free(command);
-				__exit(temp);
+				__exit(command);
 			}
 
 		/* check if str is in directory */

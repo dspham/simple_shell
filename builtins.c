@@ -18,10 +18,25 @@ void printenviron(char **environ)
 
 /**
  * __exit - exit a program
- * @status: status sent back to parent process
+ * @command: array of arguments
  * Return: none
  */
-int __exit(int status)
+int __exit(char **command)
 {
-	exit(status);
+	//char **command;
+	int i, temp;
+
+	for (i = 0; command[i] != NULL; i++)	
+
+	if (command[1] == NULL)
+	temp = 0;
+	else
+		temp = atoi(command[1]);
+	while (command[i] != NULL)
+	{
+		free(command[i]);
+		i++;
+	}
+	free(command);
+	_exit(temp);
 }

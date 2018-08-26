@@ -6,7 +6,7 @@
  * @command: array of arguments
  * Return: the directory with argument
  */
-char exec_path(char **path_array, char **scomsmand)
+char exec_path(char **path_array, char **command)
 {
 int i;
 int status, error;
