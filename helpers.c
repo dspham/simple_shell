@@ -50,3 +50,53 @@ char *_strdup(char *str)
 
 	return (p);
 }
+
+/**
+ * is_digit - checks if character is a digit.
+ * @c: character argument
+ *
+ * Return: returns 1 success, 0 otherwise
+ */
+
+int is_digit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+
+/**
+ * _atoi - converts a string to an integer
+ * @s: string argument
+ *
+ * Return: the converted int, 0 otherwise
+ */
+
+int _atoi(char *s)
+{
+	unsigned int n = 0;
+	int i = 0, sign = 1;
+
+	/* count number of negative signs */
+	while (s[i] != '\0')
+	{
+		if (s[i] == '-')
+			sign *= -1;
+		else if (is_digit(s[i]))
+			break;
+		i++;
+	}
+
+	if (s[i] == '\0')
+		return (n);
+
+	while (is_digit(s[i]))
+	{
+		n *= 10;
+		n += s[i] - '0';
+		i++;
+	}
+
+	return (n  * sign);
+}
