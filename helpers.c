@@ -100,3 +100,19 @@ int _atoi(char *s)
 
 	return (n  * sign);
 }
+
+/**
+ * _strlen - returns length of a string
+ * @str: string argument
+ *
+ * Return: length of string
+ */
+int _strlen(char *str)
+{
+	int len;
+
+	for (len = 0; str[len] != '\0'; len++)
+		;
+
+	return (len);
+}
