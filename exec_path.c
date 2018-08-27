@@ -17,7 +17,7 @@ char exec_path(char **command)
 	path_array = tok_path();
 	/* check if the concatenation of the command with */
 	/* the elements of the path array exist */
-	for (i = 0; path_array[i] != '\0'; i++)
+	for (i = 0; path_array[i] != NULL; i++)
 	{
 		full_path = path_concat(path_array[i], command[0]);
 		if (access(full_path, X_OK) == 0)
