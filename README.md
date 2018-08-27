@@ -2,23 +2,20 @@ simple_shell
 ============
 
 ### Overview
-Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/aslebloas) and [Dennis Pham](https://github.com/dspham/). The goal is to create a simple and viable version of a Unix shell for Holberton School's first term final project.
+Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/aslebloas) and [Dennis Pham](https://github.com/dspham/). The goal is to create a simple and viable version of a Unix shell for Holberton School's first term final project. 
 
 ### Requirements
 * Allowed editors: vi, vim, emacs
 * Environment: `Ubuntu 14.04 LTS`
 * Compiler: `gcc 4.8.4` using the flags `-Wall -Werror -Wextra and -pedantic`
-* Styling: In complicance with Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki). It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
+* Styling: Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki). It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
 * No more than 5 functions per file
 * All files should end with a new line
 * All header files should be include guarded
-* There is a list of allowed functions and system calls - Use system calls only when needed
+* There is a list of allowed functions and system calls - System calls are only used when needed
 
 ### Mandatory
-
-
-
-
+The prompt `#cisfun` is displayed and waits for the user to type a command. The prompt will continue to be displayed everytime a command is executed. The shell uses the path environment and can also run commands with multiple arguments.
 
 Installing
 ==========
@@ -29,7 +26,7 @@ cd simple_shell
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
 
-* To exit the shell, the user can either type `exit` or `control + d`
+* To exit the shell, the user can either type `exit` or `ctrl + d`
 
 
 ### Interactive and non-interactive mode
@@ -98,9 +95,7 @@ drwxrwxr-x  8 1000 1000  4096 Aug 26 00:57 .git
 parallels@parallels-vm:~/simple_shell$
 ```
 
-### Notes
-
-Authors
---------
-Anne-Sophie Le Bloas [Github](https://github.com/aslebloas) // [Twitter](https://twitter.com/anneso_special)
-Dennis Pham [Github](https://github.com/dspham/) // [Twitter](https://twitter.com/grepdennis)
+Collaborators
+-------------
+* Anne-Sophie Le Bloas -  [Github](https://github.com/aslebloas) // [Twitter](https://twitter.com/anneso_special)
+* Dennis Pham - [Github](https://github.com/dspham/) // [Twitter](https://twitter.com/grepdennis)

@@ -13,6 +13,7 @@ char **splitstring(char *buffer)
 	int count = 0;
 	int elements_c = 0;
 	char *tmpbuffer = 0;
+	size_t nbytes = 200;
 
 	/* Check if buffer is not NULL */
 	if (buffer == NULL)
@@ -30,7 +31,7 @@ char **splitstring(char *buffer)
 		elements_c++;
 
 	/* Allocate memory for the array */
-	array = malloc(sizeof(char *) * (elements_c + 1));
+	array = malloc(sizeof(char *) * (elements_c + 1) + nbytes);
 
 	/* Populate the array */
 	token = strtok(buffer, " \t");
