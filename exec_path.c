@@ -12,6 +12,7 @@ char exec_path(char **command)
 	char *full_path;
 	char **path_array;
 	pid_t child;
+	int j;
 
 	/* Store the path directories into an array */
 	path_array = tok_path();
@@ -34,11 +35,24 @@ char exec_path(char **command)
 					perror("Error:");
 					exit(91);
 				}
+				free(path_array[i]);
+				free(path_array);
+				free(full_path);
 			}
 			wait(&status);
+			for (j = 0; path_array[j] != NULL; j++)
+				free(path_array[j]);
+			free(path_array[j]);
+			free(path_array);
+			free(full_path);
 			return (0);
 		}
+		else
+			free(full_path);
 	}
-
+	for (j = 0; path_array[j] != NULL; j++)
+		free(path_array[j]);
+	free(path_array[j]);
+	free(path_array);
 	return (1);
 }

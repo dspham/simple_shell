@@ -36,10 +36,11 @@ char **tok_path(void)
 	while (token)
 	{
 		++token_c;
-		path_array[token_c - 1] = token;
+		path_array[token_c - 1] = _strdup(token);
 		token = strtok(NULL, ":");
 	}
 	path_array[token_c] = NULL;
-
+	free(path);
+	free(path_cpy);
 	return (path_array);
 }

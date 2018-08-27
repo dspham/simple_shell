@@ -8,10 +8,11 @@
  */
 int main(int argc, char **argv)
 {
-	int read_c = 1; /* number of bytes read */
+	int read_c = 0; /* number of bytes read */
 	size_t nbytes = 200; /* number of bytes for the stream */
 	char *string; /* command line */
 	char **command = NULL;
+
 
 	/* Handle non-interactive mode */
 	if (argc > 1)
@@ -32,6 +33,7 @@ int main(int argc, char **argv)
 		if (read_c == -1)
 		{
 			write(1, "\n", 1);
+			free(string);
 			exit(90);
 			printf("getline() failed");
 		}
@@ -51,6 +53,7 @@ int main(int argc, char **argv)
 		/* Built-in exit */
 		if (_strcmp(command[0], "exit") == 0)
 		{
+			free(string);
 			__exit(command);
 		}
 
@@ -60,11 +63,14 @@ int main(int argc, char **argv)
 		else if (read_c > 1)
 		{
 			if (exec_path(command) == 1)
-				printf("%s: No such file or directory\n", argv[0]);
+				write(1, argv[0], _strlen(argv[0]));
+				write(1, "No such file or directory", 25);
+				write(1, "\n", 1);
 		}
 		else
 			printf("%s: No such file or directory\n", argv[0]);
 	}
-
+		free(command);
+		free(string);
 	return (0);
 }

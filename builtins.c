@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <limits.h>
 
 /**
  * printenviron - print the current environment
@@ -28,9 +29,11 @@ int __exit(char **command)
 	for (i = 0; command[i] != NULL; i++)
 
 	if (command[1] == NULL)
-	temp = 0;
+		temp = 0;
+	else if (temp < INT_MAX)
+		temp = _atoi(command[1]);
 	else
-		temp = atoi(command[1]);
+		printf("%d: exit: Illegal Number: %s", i, command[1]);
 	while (command[i] != NULL)
 	{
 		free(command[i]);
