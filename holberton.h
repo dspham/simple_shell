@@ -21,6 +21,9 @@ void printenviron(char **environ);
 int __exit(char **command);
 char exec_path(char **command);
 char exec_cmd(char **command);
+char *_strdup(char *str);
+int _atoi(char *s);
+
 
 /* structures */
 /**

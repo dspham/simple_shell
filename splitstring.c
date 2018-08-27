@@ -12,7 +12,7 @@ char **splitstring(char *buffer)
 	char *token;
 	int count = 0;
 	int elements_c = 0;
-	char *tmpbuffer = 0;
+	char *tmpbuffer;
 
 	/* Check if buffer is not NULL */
 	if (buffer == NULL)
@@ -42,5 +42,6 @@ char **splitstring(char *buffer)
 		token = strtok(NULL, " \t");
 		array[count] = token;
 	}
+	free (tmpbuffer);
 	return (array);
 }
