@@ -13,7 +13,6 @@ char **splitstring(char *buffer)
 	int count = 0;
 	int elements_c = 0;
 	char *tmpbuffer = 0;
-	size_t nbytes = 200;
 
 	/* Check if buffer is not NULL */
 	if (buffer == NULL)
@@ -23,26 +22,25 @@ char **splitstring(char *buffer)
 	buffer = strtok(buffer, "\n");
 
 	/* make a copy of the buffer */
-	tmpbuffer = strdup(buffer);
+	tmpbuffer = _strdup(buffer);
 
 	/* Calculate the number of arguments */
 	strtok(tmpbuffer, " \t");
+	elements_c++;
 	while (strtok(NULL, " \t"))
 		elements_c++;
 
 	/* Allocate memory for the array */
-	array = malloc(sizeof(char *) * (elements_c + 1) + nbytes);
+	array = malloc(sizeof(char *) * (elements_c + 1));
 
 	/* Populate the array */
 	token = strtok(buffer, " \t");
 	count = 0;
 	array[count] = token;
-	for (count = 1; count < elements_c + 1; count++)
+	for (count = 1; token != NULL; count++)
 	{
 		token = strtok(NULL, " \t");
 		array[count] = token;
 	}
-	array[count] = NULL;
-
 	return (array);
 }
