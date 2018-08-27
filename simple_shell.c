@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	size_t nbytes = 200; /* number of bytes for the stream */
 	char *string; /* command line */
 	char **command = NULL;
-
+	char *error;
 
 	/* Handle non-interactive mode */
 	if (argc > 1)
@@ -32,10 +32,9 @@ int main(int argc, char **argv)
 		read_c = getline(&string, &nbytes, stdin);
 		if (read_c == -1)
 		{
-			write(1, "\n", 1);
+			write(STDOUT_FILENO, "\n", 1);
 			free(string);
 			exit(90);
-			printf("getline() failed");
 		}
 		/* Loop again if user just pressed newline */
 		else if (read_c == 1)
@@ -63,14 +62,21 @@ int main(int argc, char **argv)
 		else if (read_c > 1)
 		{
 			if (exec_path(command) == 1)
-				write(1, argv[0], _strlen(argv[0]));
-				write(1, "No such file or directory", 25);
-				write(1, "\n", 1);
+			{
+				error = ": command not found\n";
+				write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
+				write(STDOUT_FILENO, error, _strlen(error));
+			}
 		}
 		else
-			printf("%s: No such file or directory\n", argv[0]);
+		{
+			error = ": command not found\n";
+			write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
+			write(STDOUT_FILENO, error, _strlen(error));
+		}
 	}
 		free(command);
 		free(string);
+
 	return (0);
 }

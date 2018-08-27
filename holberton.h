@@ -23,7 +23,7 @@ char exec_path(char **command);
 char exec_cmd(char **command);
 char *_strdup(char *str);
 int _atoi(char *s);
-
+int _strlen(char *s);
 
 /* structures */
 /**
@@ -41,5 +41,9 @@ typedef struct list_s
 
 /* global variables */
 extern char **environ;
+
+/* Exit status */
+/* Exit 90: */
+/* Exit 99: */
 
 #endif /* _HOLBERTON_H_ */
