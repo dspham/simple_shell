@@ -15,7 +15,7 @@ Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/asl
 * There is a list of allowed functions and system calls - System calls are only used when needed
 
 ### Mandatory
-The prompt `#cisfun` is displayed and waits for the user to type a command. The prompt will continue to be displayed everytime a command is executed. The shell uses the path environment and can also run commands with multiple arguments.
+The prompt `#cisfun$` is displayed and waits for the user to type a command. The prompt will continue to be displayed everytime a command is executed. The shell uses the path environment and can also run commands with multiple arguments.
 
 Installing
 ==========
