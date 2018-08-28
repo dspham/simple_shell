@@ -4,16 +4,26 @@
 /**
  * printenviron - print the current environment
  * @environ: environment
+ * @command: array of arguments
  * Return: none
  */
-void printenviron(char **environ)
+void printenviron(char **environ, char **command)
 {
 	int i;
 
-	for (i = 0; environ[i] != NULL; i++)
+	for (i = 0 ; command[i]; i++)
+		printf("%d\n", i);
+	if (command[1])
 	{
-		write(1, environ[i], strlen(environ[i]));
-		write(1, "\n", 1);
+		write(1, "No such file or directory\n", 26);
+	}
+	else
+	{
+		for (i = 0; environ[i] != NULL; i++)
+		{
+			write(1, environ[i], strlen(environ[i]));
+			write(1, "\n", 1);
+		}
 	}
 }
 
