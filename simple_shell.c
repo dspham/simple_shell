@@ -32,7 +32,9 @@ int main(int argc, char **argv)
 		read_c = getline(&string, &nbytes, stdin);
 		if (read_c == -1)
 		{
-			write(STDOUT_FILENO, "\n", 1);
+			if (isatty(0))
+				write(STDOUT_FILENO, "\n", 1);
+
 			free(string);
 			exit(90);
 		}
