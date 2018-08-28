@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 		/* Built-in printenv */
 		if (_strcmp(command[0], "env") == 0)
 		{
-			printenviron(environ);
+			printenviron(environ, command);
 			continue;
 		}
 
