@@ -17,7 +17,7 @@ int _strcmp(char *s1, char *s2);
 char *_getenv(const char *name);
 char **tok_path(void);
 char *path_concat(char *s1, char *s2);
-void printenviron(char **environ);
+void printenviron(char **environ, char **command);
 int __exit(char **command);
 char exec_path(char **command);
 char exec_cmd(char **command);

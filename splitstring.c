@@ -5,43 +5,47 @@
  *
  * Return: array of string tokens
  */
-
 char **splitstring(char *buffer)
 {
 	char **array = NULL;
-	char *token;
+	char *token, *tmptok, *tmpbuffer;
 	int count = 0;
 	int elements_c = 0;
-	char *tmpbuffer;
 
 	/* Check if buffer is not NULL */
 	if (buffer == NULL)
 		return (NULL);
 
-	/* Remove the new line from buffer */
-	buffer = strtok(buffer, "\n");
-
 	/* make a copy of the buffer */
 	tmpbuffer = _strdup(buffer);
 
 	/* Calculate the number of arguments */
-	strtok(tmpbuffer, " \t");
-	elements_c++;
-	while (strtok(NULL, " \t"))
+	tmptok = strtok(tmpbuffer, " \t\n");
+	while (tmptok)
+	{
 		elements_c++;
+		tmptok = strtok(NULL, " \t\n");
+	}
 
 	/* Allocate memory for the array */
 	array = malloc(sizeof(char *) * (elements_c + 1));
 
-	/* Populate the array */
-	token = strtok(buffer, " \t");
-	count = 0;
-	array[count] = token;
-	for (count = 1; token != NULL; count++)
+	if (elements_c > 0)
 	{
-		token = strtok(NULL, " \t");
+		token = strtok(buffer, " \t\n");
+		count = 0;
 		array[count] = token;
+		for (count = 1; token != NULL; count++)
+		{
+			token = strtok(NULL, " \t\n");
+			array[count] = token;
+		}
+		free(tmpbuffer);
+		return (array);
 	}
-	free (tmpbuffer);
-	return (array);
+	else
+	{
+		free(tmpbuffer);
+		return (NULL);
+	}
 }
