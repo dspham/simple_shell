@@ -1,6 +1,6 @@
-#define _GNU_SOURCE
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
+#define _GNU_SOURCE
 /* Libraries */
 #include <stdio.h>
 #include <stdlib.h>
