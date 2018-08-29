@@ -33,7 +33,8 @@ int main(int argc, char **argv)
 		line++;
 		if (read_c == -1)
 		{
-			//write(STDOUT_FILENO, "\n", 1);
+			if (isatty(0))
+				write(STDOUT_FILENO, "\n", 1);
 			free(string);
 			_exit(exit_status);
 		}
@@ -101,9 +102,7 @@ int main(int argc, char **argv)
 			exit_status = 126;
 		}
 		free(string);
-
 		free(command);
 	}
-
 	return (0);
 }
