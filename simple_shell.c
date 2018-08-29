@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
 	int read_c = 0; /* number of bytes read */
-	size_t nbytes = 200; /* number of bytes for the stream */
+	size_t nbytes = 0; /* number of bytes for the stream */
 	char *string; /* command line */
 	char **command = NULL;
 	unsigned int line = 0;
@@ -22,31 +22,43 @@ int main(int argc, char **argv)
 	/* Programs runs until Ctrl+D is pressed */
 	while (read_c != EOF)
 	{
+		string = NULL;
 		/* Display a prompt */
 		write(STDIN_FILENO, "#cisfun$ ", 9);
 
-		/* Allocated memory for the string command */
-		string = malloc(nbytes + 1);
-
 		/* Get user input */
 		read_c = getline(&string, &nbytes, stdin);
+
 		line++;
 		if (read_c == -1)
 		{
-			if (isatty(0))
-				write(STDOUT_FILENO, "\n", 1);
-
 			free(string);
-			exit(90);
+			_exit(0);
 		}
+		if (read_c == 0)
+		{
+			if (isatty(0))
+			{
+				write(STDOUT_FILENO, "\n", 1);
+				continue;
+			}
+		}
+
+
 		/* Loop again if user just pressed newline */
 		else if (read_c == 1)
+		{
+			free(string);
 			continue;
+		}
 
 		command = splitstring(string);
 
 		if (command == NULL)
+		{
+			free(string);
 			continue;
+		}
 
 		/* Built-in printenv */
 		if (_strcmp(command[0], "env") == 0)
@@ -70,7 +82,6 @@ int main(int argc, char **argv)
 			else
 				print_error(argv[0], command[0], line, "perm");
 		}
-
 		else if (read_c > 1)
 		{
 			if (exec_path(command) == 1)
@@ -80,9 +91,10 @@ int main(int argc, char **argv)
 		{
 			print_error(argv[0], command[0], line, "nf");
 		}
-	}
-		free(command);
 		free(string);
+
+		free(command);
+	}
 
 	return (0);
 }
