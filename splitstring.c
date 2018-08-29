@@ -45,6 +45,8 @@ char **splitstring(char *buffer)
 	}
 	else
 	{
+		free(array);
+		free(buffer);
 		free(tmpbuffer);
 		return (NULL);
 	}
