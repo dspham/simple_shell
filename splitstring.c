@@ -27,27 +27,26 @@ char **splitstring(char *buffer)
 		tmptok = strtok(NULL, " \t\n");
 	}
 
+	free(tmpbuffer);
+
+	if (elements_c == 0)
+		return (NULL);
+
 	/* Allocate memory for the array */
 	array = malloc(sizeof(char *) * (elements_c + 1));
-
-	if (elements_c > 0)
-	{
-		token = strtok(buffer, " \t\n");
-		count = 0;
-		array[count] = token;
-		for (count = 1; token != NULL; count++)
-		{
-			token = strtok(NULL, " \t\n");
-			array[count] = token;
-		}
-		free(tmpbuffer);
-		return (array);
-	}
-	else
-	{
-		free(array);
-		free(buffer);
-		free(tmpbuffer);
+	if (array == NULL)
 		return (NULL);
+
+	count = 0;
+	token = strtok(buffer, " \t\n");
+	while (token)
+	{
+		array[count] = token;
+		token = strtok(NULL, " \t\n");
+		count++;
 	}
+
+	array[count] = NULL;
+
+	return (array);
 }
