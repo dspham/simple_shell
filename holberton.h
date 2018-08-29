@@ -20,10 +20,12 @@ char *path_concat(char *s1, char *s2);
 void printenviron(char **environ, char **command);
 int __exit(char **command);
 char exec_path(char **command);
-char exec_cmd(char **command);
+int exec_cmd(char **command);
 char *_strdup(char *str);
 int _atoi(char *s);
 int _strlen(char *s);
+int print_unsigned_int(unsigned int num, int fd);
+void print_error(char *program, char *command, unsigned int line, char *flag);
 
 /* structures */
 /**
@@ -38,6 +40,19 @@ typedef struct list_s
 	char *str;
 	struct list_s *next;
 } list_t;
+
+/**
+ * struct error_s - error struct
+ * @str: string error
+ * @next: points to the next node
+ *
+ * Description - struct
+ */
+typedef struct error_s
+{
+	char *str;
+	char *mes;
+} error_t;
 
 /* global variables */
 extern char **environ;

@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	size_t nbytes = 200; /* number of bytes for the stream */
 	char *string; /* command line */
 	char **command = NULL;
-	char *error;
+	unsigned int line = 0;
 
 	/* Handle non-interactive mode */
 	if (argc > 1)
@@ -30,6 +30,7 @@ int main(int argc, char **argv)
 
 		/* Get user input */
 		read_c = getline(&string, &nbytes, stdin);
+		line++;
 		if (read_c == -1)
 		{
 			if (isatty(0))
@@ -62,22 +63,22 @@ int main(int argc, char **argv)
 		}
 
 		/* check if str is in directory */
-		if (access(command[0], X_OK) == 0)
-			exec_cmd(command);
+		if (access(command[0], F_OK) == 0)
+		{
+			if (access(command[0], X_OK) == 0)
+				exec_cmd(command);
+			else
+				print_error(argv[0], command[0], line, "perm");
+		}
+
 		else if (read_c > 1)
 		{
 			if (exec_path(command) == 1)
-			{
-				error = ": command not found\n";
-				write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
-				write(STDOUT_FILENO, error, _strlen(error));
-			}
+				print_error(argv[0], command[0], line, "nf");
 		}
 		else
 		{
-			error = ": command not found\n";
-			write(STDOUT_FILENO, argv[0], _strlen(argv[0]));
-			write(STDOUT_FILENO, error, _strlen(error));
+			print_error(argv[0], command[0], line, "nf");
 		}
 	}
 		free(command);
