@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 		line++;
 		if (read_c == -1)
 		{
-			write(STDOUT_FILENO, "\n", 1);
+			//write(STDOUT_FILENO, "\n", 1);
 			free(string);
 			_exit(exit_status);
 		}
