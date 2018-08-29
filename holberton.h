@@ -27,6 +27,7 @@ int _atoi(char *s);
 int _strlen(char *s);
 int print_unsigned_int(unsigned int num, int fd);
 void print_error(char *program, char *command, unsigned int line, char *flag);
+void _siginterrupt(int __attribute__ ((unused)));
 
 /* structures */
 /**

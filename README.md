@@ -48,17 +48,17 @@ You can check the builtin commands in the man page:
 
 ### Examples
 ```
-parallels@parallels-vm:~/simple_shell$ ./hsh
+vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ ./hsh
 #cisfun$ w
- 00:59:43 up  2:23,  1 user,  load average: 0.04, 0.05, 0.01
+ 21:07:57 up 38 min,  1 user,  load average: 0.00, 0.01, 0.03
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-parallel tty7     :0               22:40    2:23m 48.73s  0.16s /sbin/upstart -
+vagrant  pts/0    10.0.2.2         20:31    7.00s  0.06s  0.00s w
 #cisfun$ whoami
-parallels
-#cisfun$ echo "hello"
-"hello"
+vagrant
+#cisfun$ echo "hello world"
+"hello world"
 #cisfun$ pwd
-/home/parallels/simple_shell
+/home/vagrant/Holberton/simple_shell
 #cisfun$ uname
 Linux
 #cisfun$ bc
@@ -68,31 +68,29 @@ This is free software with ABSOLUTELY NO WARRANTY.
 For details type `warranty'.
 quit
 #cisfun$ ls -lan
-total 124
-drwxrwxr-x  3 1000 1000  4096 Aug 26 00:59 .
-drwxr-xr-x 23 1000 1000  4096 Aug 25 22:40 ..
-drwxrwxr-x  8 1000 1000  4096 Aug 26 00:57 .git
--rw-rw-r--  1 1000 1000   155 Aug 23 12:11 AUTHORS
--rw-rw-r--  1 1000 1000   936 Aug 26 00:07 README.md
--rw-rw-r--  1 1000 1000   595 Aug 25 17:41 _getenv.c
--rw-rw-r--  1 1000 1000   492 Aug 24 10:57 _strdup.c
--rwxrwxr-x  1 1000 1000 14408 Aug 24 16:34 a.out
--rw-rw-r--  1 1000 1000   626 Aug 25 18:32 builtins.c
--rw-rw-r--  1 1000 1000   489 Aug 25 18:10 exec_cmd.c
--rw-rw-r--  1 1000 1000  1006 Aug 25 18:20 exec_path.c
--rw-rw-r--  1 1000 1000   345 Aug 25 18:51 helpers.c
--rw-rw-r--  1 1000 1000  1036 Aug 25 18:51 holberton.h
--rwxrwxr-x  1 1000 1000 14496 Aug 26 00:59 hsh
--rw-rw-r--  1 1000 1000   837 Aug 24 16:41 man_1_simple_shell
--rw-rw-r--  1 1000 1000   673 Aug 25 17:10 path_concat.c
--rwxrwxr-x  1 1000 1000 14496 Aug 26 00:56 shell
--rw-rw-r--  1 1000 1000  1400 Aug 26 00:58 simple_shell.c
--rw-rw-r--  1 1000 1000   960 Aug 25 17:34 splitstring.c
--rw-rw-r--  1 1000 1000   646 Aug 24 10:58 str_concat.c
--rw-rw-r--  1 1000 1000    16 Aug 24 17:48 test_ls_2
--rw-rw-r--  1 1000 1000   779 Aug 24 17:27 tok_path.c
+total 96
+drwxrwxr-x 3 1000 1000  4096 Aug 29 20:38 .
+drwxrwxr-x 3 1000 1000  4096 Aug 29 20:38 ..
+drwxrwxr-x 8 1000 1000  4096 Aug 29 20:38 .git
+-rw-rw-r-- 1 1000 1000   155 Aug 29 20:38 AUTHORS
+-rw-rw-r-- 1 1000 1000  3896 Aug 29 20:38 README.md
+-rw-rw-r-- 1 1000 1000   595 Aug 29 20:38 _getenv.c
+-rw-rw-r-- 1 1000 1000   841 Aug 29 20:38 builtins.c
+-rw-rw-r-- 1 1000 1000   571 Aug 29 20:38 error_check.c
+-rw-rw-r-- 1 1000 1000   506 Aug 29 20:38 exec_cmd.c
+-rw-rw-r-- 1 1000 1000  1240 Aug 29 20:38 exec_path.c
+-rw-rw-r-- 1 1000 1000  1661 Aug 29 20:38 helpers.c
+-rw-rw-r-- 1 1000 1000  1434 Aug 29 20:38 holberton.h
+-rwxrwxr-x 1 1000 1000 18512 Aug 29 20:38 hsh
+-rw-rw-r-- 1 1000 1000  1194 Aug 29 20:38 man_1_simple_shell
+-rw-rw-r-- 1 1000 1000   673 Aug 29 20:38 path_concat.c
+-rw-rw-r-- 1 1000 1000   625 Aug 29 20:38 print_unsigned_int.c
+-rw-rw-r-- 1 1000 1000  1901 Aug 29 20:38 simple_shell.c
+-rw-rw-r-- 1 1000 1000   953 Aug 29 20:38 splitstring.c
+-rw-rw-r-- 1 1000 1000   646 Aug 29 20:38 str_concat.c
+-rw-rw-r-- 1 1000 1000   817 Aug 29 20:38 tok_path.c
 #cisfun$ exit
-parallels@parallels-vm:~/simple_shell$
+vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$
 ```
 
 Collaborators
