@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <limits.h>
 
 /* prototypes */
 char **splitstring(char *buffer);
@@ -46,7 +47,7 @@ typedef struct list_s
 /**
  * struct error_s - error struct
  * @str: string error
- * @next: points to the next node
+ * @mes: error message to be printed
  *
  * Description - struct
  */
