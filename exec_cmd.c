@@ -3,9 +3,10 @@
 /**
  * exec_cmd - executes tokenized commands
  * @command: array of arguments
- * Return: none
+ *
+ * Return: 1 on success amd -1 on failure
  */
-char exec_cmd(char **command)
+int exec_cmd(char **command)
 {
 	int status, error;
 	pid_t child;
@@ -18,11 +19,14 @@ char exec_cmd(char **command)
 		/* execute the command in child */
 		error = execve(command[0], command, NULL);
 		if (error == -1)
+		{
 			perror("Error:");
+			return (error);
+		}
 		else
-			return (0);
+			return (1);
 	}
 	wait(&status);
 
-	return (0);
+	return (1);
 }
