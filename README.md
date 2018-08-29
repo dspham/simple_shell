@@ -1,35 +1,68 @@
 simple_shell
 ============
 
-### Overview
-Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/aslebloas) and [Dennis Pham](https://github.com/dspham/). The goal is to create a simple and viable version of a Unix shell for Holberton School's first term final project. 
+## Table of Contents
 
-### Requirements
+Overview
+Requirements
+
+
+## Overview
+Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/aslebloas)
+and [Dennis Pham](https://github.com/dspham/). The goal is to create a simple 
+and viable version of a Unix shell for Holberton School's first term final project. 
+
+## Requirements
 * Allowed editors: vi, vim, emacs
 * Environment: `Ubuntu 14.04 LTS`
 * Compiler: `gcc 4.8.4` using the flags `-Wall -Werror -Wextra and -pedantic`
-* Styling: Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki). It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
+* Styling: Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki). 
+It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) 
+and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
 * No more than 5 functions per file
 * All files should end with a new line
 * All header files should be include guarded
 * There is a list of allowed functions and system calls - System calls are only used when needed
 
-### Mandatory
-The prompt `#cisfun$` is displayed and waits for the user to type a command. The prompt will continue to be displayed everytime a command is executed. The shell uses the path environment and can also run commands with multiple arguments.
+## Usage
+The prompt `#cisfun$` is displayed and waits for the user to type a command. 
+The prompt will continue to be displayed everytime a command is executed. The 
+shell uses the path environment and can also run commands with multiple arguments.
 
-Installing
-==========
-#### Source
+## File List
+
+** AUTHORS **
+   Credits
+** README.md **
+   Key information about the program
+** _getenv.c **
+** builtins.c **
+** error_check.c **
+** exec_cmd.c **
+** exec_path.c **
+** helpers.c **
+** holberton.h **
+** man_1_simple_shell **
+** path_concat.c **
+** print_unsigned_int.c **
+** simple_shell.c **
+** splitstring.c **
+** str_concat.c **
+** tok_path.c **
+
+## Installation
+
 ```
 git clone git@github.com:dspham/simple_shell.git
 cd simple_shell
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+./hsh
 ```
 
 * To exit the shell, the user can either type `exit` or `ctrl + d`
 
 
-### Interactive and non-interactive mode
+## Interactive and non-interactive mode
 In interactive mode, the user input is accepted from the command line.
 In non-interactive-mode, the user must first run the program:
 
@@ -37,7 +70,7 @@ In non-interactive-mode, the user must first run the program:
 
 Then a subshell opens, which accept the commands.
 
-### Builtins and commands
+## Builtins and commands
 
 You can check the builtin commands in the man page:
 `$ man ./man_1_simple_shell`
@@ -46,7 +79,7 @@ You can check the builtin commands in the man page:
 * `exit`
 * `env`
 
-### Examples
+## Examples
 ```
 vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ ./hsh
 #cisfun$ w
