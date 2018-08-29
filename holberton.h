@@ -57,8 +57,10 @@ typedef struct error_s
 /* global variables */
 extern char **environ;
 
+
 /* Exit status */
 /* Exit 90: */
 /* Exit 99: */
-
+/* Exit 127: Not found */
+/* Exit 126: Permission denied */
 #endif /* _HOLBERTON_H_ */

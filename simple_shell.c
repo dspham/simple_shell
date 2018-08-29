@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 	char *string; /* command line */
 	char **command = NULL;
 	unsigned int line = 0;
+	int exit_status = 0;
 
 	/* Handle non-interactive mode */
 	if (argc > 1)
@@ -32,8 +33,9 @@ int main(int argc, char **argv)
 		line++;
 		if (read_c == -1)
 		{
+			write(STDOUT_FILENO, "\n", 1);
 			free(string);
-			_exit(0);
+			_exit(exit_status);
 		}
 		if (read_c == 0)
 		{
@@ -80,16 +82,23 @@ int main(int argc, char **argv)
 			if (access(command[0], X_OK) == 0)
 				exec_cmd(command);
 			else
+			{
 				print_error(argv[0], command[0], line, "perm");
+				exit_status = 127;
+			}
 		}
 		else if (read_c > 1)
 		{
 			if (exec_path(command) == 1)
+			{
 				print_error(argv[0], command[0], line, "nf");
+				exit_status = 127;
+			}
 		}
 		else
 		{
 			print_error(argv[0], command[0], line, "nf");
+			exit_status = 126;
 		}
 		free(string);
 
