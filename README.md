@@ -9,15 +9,15 @@ Requirements
 
 ## Overview
 Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/aslebloas)
-and [Dennis Pham](https://github.com/dspham/). The goal is to create a simple 
-and viable version of a Unix shell for Holberton School's first term final project. 
+and [Dennis Pham](https://github.com/dspham/). The goal is to create a simple
+and viable version of a Unix shell for Holberton School's first term final project.
 
 ## Requirements
 * Allowed editors: vi, vim, emacs
 * Environment: `Ubuntu 14.04 LTS`
 * Compiler: `gcc 4.8.4` using the flags `-Wall -Werror -Wextra and -pedantic`
-* Styling: Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki). 
-It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) 
+* Styling: Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki).
+It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl)
 and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
 * No more than 5 functions per file
 * All files should end with a new line
@@ -25,38 +25,99 @@ and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-do
 * There is a list of allowed functions and system calls - System calls are only used when needed
 
 ## Usage
-The prompt `#cisfun$` is displayed and waits for the user to type a command. 
-The prompt will continue to be displayed everytime a command is executed. The 
+The prompt `#cisfun$` is displayed and waits for the user to type a command.
+The prompt will continue to be displayed everytime a command is executed. The
 shell uses the path environment and can also run commands with multiple arguments.
 
 ## File List
 
 ** AUTHORS **
-   Credits
+
+   lists all individuals having contributed content to the repository.
+
 ** README.md **
+
    Key information about the program
+
 ** _getenv.c **
+
+   gets an environment variable
+
 ** builtins.c **
+
+   Includes the following functions:
+
+   printenviron - print the current environment
+
+   __exit - exit a program
+
+   _siginterrupt - interrupt from keyboard
+
 ** error_check.c **
+
+   prints error message contingent on invalid commands
+
 ** exec_cmd.c **
+
+   executes tokenized commands
+
 ** exec_path.c **
+
+   executes arguments concatenated to path directory
+
 ** helpers.c **
+
+   Includes the following functions:
+
+   _strcmp - compres two strings
+
+   _strdup - duplicates a string
+
+   is_digit - checks if character is a digit.
+
+   _atoi - converts a string to an integer
+
+   _strlen - returns length of a string
+
 ** holberton.h **
+
+   Header file
+
 ** man_1_simple_shell **
+
+   Man page
+
 ** path_concat.c **
+
+   concatenates two strings
+
 ** print_unsigned_int.c **
+
+   prints a number to stderr
+
 ** simple_shell.c **
+
+   main program
+
 ** splitstring.c **
+
+   tokenize a string and puts tokens into array
+
 ** str_concat.c **
+
+   concatenates two strings
+
 ** tok_path.c **
+
+   stores each directory from path into an array
 
 ## Installation
 
 ```
-git clone git@github.com:dspham/simple_shell.git
-cd simple_shell
-gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
-./hsh
+$ git clone git@github.com:dspham/simple_shell.git
+$ cd simple_shell
+$ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+$ ./hsh
 ```
 
 * To exit the shell, the user can either type `exit` or `ctrl + d`
