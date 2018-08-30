@@ -8,11 +8,10 @@
  */
 char exec_path(char **command)
 {
-	int i, status, error;
+	int i, j, status, error;
 	char *full_path;
 	char **path_array;
 	pid_t child;
-	int j;
 
 	/* Store the path directories into an array */
 	path_array = tok_path();
