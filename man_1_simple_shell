@@ -1,16 +1,23 @@
-.TH _PRINTF 3 "AUGUST 30 2018" "0.01" "simple shell man page"
+.TH HSH 1 "AUGUST 30 2018" "0.01" "Simple Shell man page"
 .SH NAME
 .B HSH
 \- Simple Shell developed by Holberton Students
 
 .SH SYNOPSIS
-    hsh [command_string]
+    Non-interactive mode: ./hsh [command_string | file]
+
+    Interactive-mode: [command_string]
 
 .SH DESCRIPTION
 HSH is an sh-compatible command language interpreter that executes commands read
 from the standard input or from a file.
 
-.SH SHELL GRAMMAR
+.SH INVOCATION
+An interactive shell is one started without arguments.
+PS1 is set to #cisfun$.
+You can also pipe commands to the ./hsh exectuable file. This is the non-interactive
+mode.
+
 .IP
 .P
 .TP
@@ -20,22 +27,34 @@ separated words and redirections, and terminated by a control operator. The firs
 word specifies the command to be executed, and is passed as an argment zero. The
 remaining words are passed as arguments to the invoked command.
 
-.SH BUILT-INS & COMMANDS
+.IP
+.P
+.TP
+.B Pipelines
+A pipeline is a sequence of one or more commands separated by one of the
+control operators | or |&.
+
+The format for a pipeline is:
+
+	[time [-p]] [ ! ] command [ [|⎪|&] command2 ... ]
+
+.SH BUILT-INS
 .PP
 .B env
 - writes environmental variable
-.PP
-.B getenv
-- get a specific environmental variable
-.B echo [arg ...]
-- Argments separated by spaces, followed by a newline, are printed on the
-standard output
+
 .B exit [n]
 - Cause the shell to exit with a status of n. If n is omitted, the exit status
 is that the last command executed.
 
 .SH QUITING
-You can quit the shell program by pressing the CTRL + C keys on your keyboard.
+You can quit the shell program by pressing the CTRL + D keys on your keyboard or
+use the builtin command
+.B exit [n]
+.
+
+.SH RETURN
+Programs return with value 0. Exit status can be accessed after exit.
 
 .SH EXAMPLES
 
