@@ -1,5 +1,5 @@
 #include "holberton.h"
-#include <limits.h>
+
 
 /**
  * printenviron - print the current environment
@@ -47,4 +47,16 @@ int __exit(char **command)
 	}
 	free(command);
 	_exit(temp);
+}
+
+
+/**
+ * _siginterrupt - interrupt from keyboard
+ * @digitalism: unused variable
+ * Return: none
+ */
+void _siginterrupt(int __attribute__ ((unused)) digitalism)
+{
+	write(1, "\n", 1);
+	write(STDIN_FILENO, "#cisfun$ ", 9);
 }

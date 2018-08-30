@@ -1,35 +1,105 @@
 simple_shell
 ============
 
-### Overview
-Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/aslebloas) and [Dennis Pham](https://github.com/dspham/). The goal is to create a simple and viable version of a Unix shell for Holberton School's first term final project. 
+## Table of Contents
 
-### Requirements
+Overview
+Requirements
+
+
+## Overview
+Simple Shell is a group project by [Anne-Sophie Le Bloas](https://github.com/aslebloas)
+and [Dennis Pham](https://github.com/dspham/). The goal is to create a simple
+and viable version of a Unix shell for Holberton School's first term final project.
+
+## Requirements
 * Allowed editors: vi, vim, emacs
 * Environment: `Ubuntu 14.04 LTS`
 * Compiler: `gcc 4.8.4` using the flags `-Wall -Werror -Wextra and -pedantic`
-* Styling: Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki). It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl) and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
+* Styling: Holberton School's [Betty Style](https://github.com/holbertonschool/Betty/wiki).
+It will be checked using [betty-style.pl](https://github.com/holbertonschool/Betty/blob/master/betty-style.pl)
+and [betty-doc.pl](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
 * No more than 5 functions per file
 * All files should end with a new line
 * All header files should be include guarded
 * There is a list of allowed functions and system calls - System calls are only used when needed
 
-### Mandatory
-The prompt `#cisfun$` is displayed and waits for the user to type a command. The prompt will continue to be displayed everytime a command is executed. The shell uses the path environment and can also run commands with multiple arguments.
+## Usage
+The prompt `#cisfun$` is displayed and waits for the user to type a command.
+The prompt will continue to be displayed everytime a command is executed. The
+shell uses the path environment and can also run commands with multiple arguments.
 
-Installing
-==========
-#### Source
+## File List
+
+**AUTHORS**
+* lists all individuals having contributed content to the repository.
+
+**README.md**
+* Key information about the program
+
+**_getenv.c**
+* gets an environment variable
+
+**builtins.c**
+* Includes the following functions:
+    * printenviron - print the current environment
+    * __exit - exit a program
+    * _siginterrupt - interrupt from keyboard
+
+**error_check.c**
+* prints error message contingent on invalid commands
+
+**exec_cmd.c**
+* executes tokenized commands
+
+**exec_path.c**
+* executes arguments concatenated to path directory
+
+**helpers.c**
+* Includes the following functions:
+    * _strcmp - compres two strings
+    * _strdup - duplicates a string
+    * is_digit - checks if character is a digit.
+    * _atoi - converts a string to an integer
+    * _strlen - returns length of a string
+
+**holberton.h**
+* Header file
+
+**man_1_simple_shell**
+* Man page
+
+**path_concat.c**
+* concatenates two strings
+
+**print_unsigned_int.c**
+* prints a number to stderr
+
+**simple_shell.c**
+* main program
+
+**splitstring.c**
+* tokenize a string and puts tokens into array
+
+**str_concat.c**
+* concatenates two strings
+
+**tok_path.c**
+* stores each directory from path into an array
+
+## Installation
+
 ```
-git clone git@github.com:dspham/simple_shell.git
-cd simple_shell
-gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+$ git clone git@github.com:dspham/simple_shell.git
+$ cd simple_shell
+$ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+$ ./hsh
 ```
 
 * To exit the shell, the user can either type `exit` or `ctrl + d`
 
 
-### Interactive and non-interactive mode
+## Interactive and non-interactive mode
 In interactive mode, the user input is accepted from the command line.
 In non-interactive-mode, the user must first run the program:
 
@@ -37,7 +107,7 @@ In non-interactive-mode, the user must first run the program:
 
 Then a subshell opens, which accept the commands.
 
-### Builtins and commands
+## Builtins and commands
 
 You can check the builtin commands in the man page:
 `$ man ./man_1_simple_shell`
@@ -46,19 +116,19 @@ You can check the builtin commands in the man page:
 * `exit`
 * `env`
 
-### Examples
+## Examples
 ```
-parallels@parallels-vm:~/simple_shell$ ./hsh
+vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$ ./hsh
 #cisfun$ w
- 00:59:43 up  2:23,  1 user,  load average: 0.04, 0.05, 0.01
+ 21:07:57 up 38 min,  1 user,  load average: 0.00, 0.01, 0.03
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-parallel tty7     :0               22:40    2:23m 48.73s  0.16s /sbin/upstart -
+vagrant  pts/0    10.0.2.2         20:31    7.00s  0.06s  0.00s w
 #cisfun$ whoami
-parallels
-#cisfun$ echo "hello"
-"hello"
+vagrant
+#cisfun$ echo "hello world"
+"hello world"
 #cisfun$ pwd
-/home/parallels/simple_shell
+/home/vagrant/Holberton/simple_shell
 #cisfun$ uname
 Linux
 #cisfun$ bc
@@ -68,31 +138,29 @@ This is free software with ABSOLUTELY NO WARRANTY.
 For details type `warranty'.
 quit
 #cisfun$ ls -lan
-total 124
-drwxrwxr-x  3 1000 1000  4096 Aug 26 00:59 .
-drwxr-xr-x 23 1000 1000  4096 Aug 25 22:40 ..
-drwxrwxr-x  8 1000 1000  4096 Aug 26 00:57 .git
--rw-rw-r--  1 1000 1000   155 Aug 23 12:11 AUTHORS
--rw-rw-r--  1 1000 1000   936 Aug 26 00:07 README.md
--rw-rw-r--  1 1000 1000   595 Aug 25 17:41 _getenv.c
--rw-rw-r--  1 1000 1000   492 Aug 24 10:57 _strdup.c
--rwxrwxr-x  1 1000 1000 14408 Aug 24 16:34 a.out
--rw-rw-r--  1 1000 1000   626 Aug 25 18:32 builtins.c
--rw-rw-r--  1 1000 1000   489 Aug 25 18:10 exec_cmd.c
--rw-rw-r--  1 1000 1000  1006 Aug 25 18:20 exec_path.c
--rw-rw-r--  1 1000 1000   345 Aug 25 18:51 helpers.c
--rw-rw-r--  1 1000 1000  1036 Aug 25 18:51 holberton.h
--rwxrwxr-x  1 1000 1000 14496 Aug 26 00:59 hsh
--rw-rw-r--  1 1000 1000   837 Aug 24 16:41 man_1_simple_shell
--rw-rw-r--  1 1000 1000   673 Aug 25 17:10 path_concat.c
--rwxrwxr-x  1 1000 1000 14496 Aug 26 00:56 shell
--rw-rw-r--  1 1000 1000  1400 Aug 26 00:58 simple_shell.c
--rw-rw-r--  1 1000 1000   960 Aug 25 17:34 splitstring.c
--rw-rw-r--  1 1000 1000   646 Aug 24 10:58 str_concat.c
--rw-rw-r--  1 1000 1000    16 Aug 24 17:48 test_ls_2
--rw-rw-r--  1 1000 1000   779 Aug 24 17:27 tok_path.c
+total 96
+drwxrwxr-x 3 1000 1000  4096 Aug 29 20:38 .
+drwxrwxr-x 3 1000 1000  4096 Aug 29 20:38 ..
+drwxrwxr-x 8 1000 1000  4096 Aug 29 20:38 .git
+-rw-rw-r-- 1 1000 1000   155 Aug 29 20:38 AUTHORS
+-rw-rw-r-- 1 1000 1000  3896 Aug 29 20:38 README.md
+-rw-rw-r-- 1 1000 1000   595 Aug 29 20:38 _getenv.c
+-rw-rw-r-- 1 1000 1000   841 Aug 29 20:38 builtins.c
+-rw-rw-r-- 1 1000 1000   571 Aug 29 20:38 error_check.c
+-rw-rw-r-- 1 1000 1000   506 Aug 29 20:38 exec_cmd.c
+-rw-rw-r-- 1 1000 1000  1240 Aug 29 20:38 exec_path.c
+-rw-rw-r-- 1 1000 1000  1661 Aug 29 20:38 helpers.c
+-rw-rw-r-- 1 1000 1000  1434 Aug 29 20:38 holberton.h
+-rwxrwxr-x 1 1000 1000 18512 Aug 29 20:38 hsh
+-rw-rw-r-- 1 1000 1000  1194 Aug 29 20:38 man_1_simple_shell
+-rw-rw-r-- 1 1000 1000   673 Aug 29 20:38 path_concat.c
+-rw-rw-r-- 1 1000 1000   625 Aug 29 20:38 print_unsigned_int.c
+-rw-rw-r-- 1 1000 1000  1901 Aug 29 20:38 simple_shell.c
+-rw-rw-r-- 1 1000 1000   953 Aug 29 20:38 splitstring.c
+-rw-rw-r-- 1 1000 1000   646 Aug 29 20:38 str_concat.c
+-rw-rw-r-- 1 1000 1000   817 Aug 29 20:38 tok_path.c
 #cisfun$ exit
-parallels@parallels-vm:~/simple_shell$
+vagrant@vagrant-ubuntu-trusty-64:~/Holberton/simple_shell$
 ```
 
 Collaborators

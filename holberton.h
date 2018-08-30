@@ -1,5 +1,6 @@
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
+#define _GNU_SOURCE
 /* Libraries */
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,6 +9,7 @@
 #include <sys/stat.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <limits.h>
 
 /* prototypes */
 char **splitstring(char *buffer);
@@ -26,6 +28,7 @@ int _atoi(char *s);
 int _strlen(char *s);
 int print_unsigned_int(unsigned int num, int fd);
 void print_error(char *program, char *command, unsigned int line, char *flag);
+void _siginterrupt(int __attribute__ ((unused)));
 
 /* structures */
 /**
@@ -44,7 +47,7 @@ typedef struct list_s
 /**
  * struct error_s - error struct
  * @str: string error
- * @next: points to the next node
+ * @mes: error message to be printed
  *
  * Description - struct
  */
