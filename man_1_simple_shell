@@ -78,6 +78,7 @@ To print:
 .I _getenv.c   exec_path.c    path_concat.c	 str_concat.c
 .I a.out	    helpers.c	   print_unsigned_int.c  test_ls_2
 .I builtins.c  holberton.h    shell		 tok_path.c
+.TP
 .I #cisfun$ 
 
 
