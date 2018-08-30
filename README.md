@@ -31,85 +31,61 @@ shell uses the path environment and can also run commands with multiple argument
 
 ## File List
 
-** AUTHORS **
+**AUTHORS**
+* lists all individuals having contributed content to the repository.
 
-   lists all individuals having contributed content to the repository.
+**README.md**
+* Key information about the program
 
-** README.md **
+**_getenv.c**
+* gets an environment variable
 
-   Key information about the program
+**builtins.c**
+* Includes the following functions:
+    * printenviron - print the current environment
+    * __exit - exit a program
+    * _siginterrupt - interrupt from keyboard
 
-** _getenv.c **
+**error_check.c**
+* prints error message contingent on invalid commands
 
-   gets an environment variable
+**exec_cmd.c**
+* executes tokenized commands
 
-** builtins.c **
+**exec_path.c**
+* executes arguments concatenated to path directory
 
-   Includes the following functions:
+**helpers.c**
+* Includes the following functions:
+    * _strcmp - compres two strings
+    * _strdup - duplicates a string
+    * is_digit - checks if character is a digit.
+    * _atoi - converts a string to an integer
+    * _strlen - returns length of a string
 
-   printenviron - print the current environment
+**holberton.h**
+* Header file
 
-   __exit - exit a program
+**man_1_simple_shell**
+* Man page
 
-   _siginterrupt - interrupt from keyboard
+**path_concat.c**
+* concatenates two strings
 
-** error_check.c **
+**print_unsigned_int.c**
+* prints a number to stderr
 
-   prints error message contingent on invalid commands
+**simple_shell.c**
+* main program
 
-** exec_cmd.c **
+**splitstring.c**
+* tokenize a string and puts tokens into array
 
-   executes tokenized commands
+**str_concat.c**
+* concatenates two strings
 
-** exec_path.c **
-
-   executes arguments concatenated to path directory
-
-** helpers.c **
-
-   Includes the following functions:
-
-   _strcmp - compres two strings
-
-   _strdup - duplicates a string
-
-   is_digit - checks if character is a digit.
-
-   _atoi - converts a string to an integer
-
-   _strlen - returns length of a string
-
-** holberton.h **
-
-   Header file
-
-** man_1_simple_shell **
-
-   Man page
-
-** path_concat.c **
-
-   concatenates two strings
-
-** print_unsigned_int.c **
-
-   prints a number to stderr
-
-** simple_shell.c **
-
-   main program
-
-** splitstring.c **
-
-   tokenize a string and puts tokens into array
-
-** str_concat.c **
-
-   concatenates two strings
-
-** tok_path.c **
-
-   stores each directory from path into an array
+**tok_path.c**
+* stores each directory from path into an array
 
 ## Installation
 
