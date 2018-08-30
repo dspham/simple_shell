@@ -4,6 +4,8 @@
 \- Simple Shell developed by Holberton Students
 
 .SH SYNOPSIS
+Simple shell is a simple version of a Unix shell. A prompt is displayed and will continue to be displayed everytime a command is executed. The shell reads executables from the PATH environment variable and can also handle the built-in functions 'env' and 'exit'.
+
     Non-interactive mode: ./hsh [command_string | file]
 
     Interactive-mode: [command_string]
@@ -47,16 +49,37 @@ The format for a pipeline is:
 - Cause the shell to exit with a status of n. If n is omitted, the exit status
 is that the last command executed.
 
-.SH QUITING
+.SH ENVIRONMENT 
+.B PATH 
+- The default search path for executables.
+
+.B PS1 
+- The primary prompt string, which defaults to "cisfun$ "
+
+.SH QUITTING
 You can quit the shell program by pressing the CTRL + D keys on your keyboard or
 use the builtin command
 .B exit [n]
 .
 
 .SH RETURN
-Programs return with value 0. Exit status can be accessed after exit.
+Programs return with value 0 on success. Exit status can be accessed after exit.
 
-.SH EXAMPLES
+.SH EXAMPLE
+To print:
+.br
+.TP
+.I #cisfun$ echo "hello world"
+.I "hello world"
+.TP
+.I #cisfun$ ls
+.I AUTHORS     error_check.c  hsh			 simple_shell.c
+.I README.md   exec_cmd.c	   man_1_simple_shell	 splitstring.c
+.I _getenv.c   exec_path.c    path_concat.c	 str_concat.c
+.I a.out	    helpers.c	   print_unsigned_int.c  test_ls_2
+.I builtins.c  holberton.h    shell		 tok_path.c
+.I #cisfun$ 
+
 
 .SH BUGS
 No known bugs.
