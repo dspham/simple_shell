@@ -30,7 +30,11 @@ void printenviron(char **environ, char **command)
  */
 int __exit(char **command)
 {
-	int i, temp;
+	static int i;
+	int temp;
+
+	if (command[1])
+		printf("arg %s\n", command[1]);
 
 	for (i = 0; command[i] != NULL; i++)
 
@@ -40,23 +44,13 @@ int __exit(char **command)
 		temp = _atoi(command[1]);
 	else
 		printf("%d: exit: Illegal Number: %s", i, command[1]);
+	printf("%d\n", temp);
 	while (command[i] != NULL)
 	{
 		free(command[i]);
 		i++;
 	}
+	printf("%d\n", temp);
 	free(command);
 	_exit(temp);
-}
-
-
-/**
- * _siginterrupt - interrupt from keyboard
- * @digitalism: unused variable
- * Return: none
- */
-void _siginterrupt(int __attribute__ ((unused)) digitalism)
-{
-	write(1, "\n", 1);
-	write(STDIN_FILENO, "#cisfun$ ", 9);
 }

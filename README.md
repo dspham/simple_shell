@@ -2,9 +2,15 @@ simple_shell
 ============
 
 ## Table of Contents
-
-Overview
-Requirements
+* Overview
+* Requirements
+* Usage
+* File List
+* Installation
+* Interactive and non-interactive mode
+* Builtins and commands
+* Examples
+* Collaborators
 
 
 ## Overview
@@ -30,9 +36,6 @@ The prompt will continue to be displayed everytime a command is executed. The
 shell uses the path environment and can also run commands with multiple arguments.
 
 ## File List
-
-**AUTHORS**
-* lists all individuals having contributed content to the repository.
 
 **README.md**
 * Key information about the program
@@ -74,6 +77,9 @@ shell uses the path environment and can also run commands with multiple argument
 
 **print_unsigned_int.c**
 * prints a number to stderr
+
+**signal_int.c**
+* interrupt from keyboard
 
 **simple_shell.c**
 * main program
